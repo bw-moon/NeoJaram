@@ -1,0 +1,116 @@
+﻿<?
+include_once realpath(dirname(__FILE__).'/../../lib/includes').'/library.inc.php';
+?>
+<?= "<?xml version=\"1.0\" encoding=\"euc-kr\"?".">";?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Jaram 3rd Renewal : 2003</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="Content-Language" content="ko-KR" />
+<meta name="Generator" content="EditPlus" />
+<meta name="Author" content="네오자람" />
+<meta name="Description" content="한양대학교 전자컴퓨터공학부 전산전공학회 자람입니다." />
+<!-- 공통 스타일 시트 -->
+<link rel="stylesheet" type="text/css" href="<?=WEB_ABS_PATH?>/css/main.css" />
+</head>
+<body onload=""  bgcolor="#ffffff" link="#1166bb" vlink="#666666" alink="#ddeeff">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <td width="10"><img src="/images/t.gif" height="1" width="10" alt="" /></td>
+    <td valign="top" class="text"> 
+		<!-- 메인 내용 시작 -->
+		<img src="<?=WEB_ABS_PATH?>/images/t.gif" height="5" width="5" alt="" /><br />
+
+<script type="text/javascript" language="javascript">
+function editinfo() {
+	// 비밀번호란만 넣거나 비밀번호 확인란만 넣었을 경우
+	if ((document.Feditinfo.pass.value && !document.Feditinfo.re_pass.value)
+		|| (!document.Feditinfo.pass.value && document.Feditinfo.re_pass.value)) {
+		alert('비밀번호와 비밀번호 확인 둘 다 넣어주세요!');
+		document.Feditinfo.pass.focus();
+		return;
+	} else if (document.Feditinfo.pass.value && document.Feditinfo.re_pass.value) {
+		if (document.Feditinfo.pass.value.length < 4) {
+			alert('비밀번호가 너무 짧습니다!');
+			document.Feditinfo.pass.focus();
+			return;
+		}
+
+		if (document.Feditinfo.pass.value != document.Feditinfo.re_pass.value) {
+			alert('비밀번호 확인을 제대로 해주세요!');
+			document.Feditinfo.re_pass.focus();
+			return;
+		}
+	}
+
+	document.Feditinfo.submit();
+}
+</script>
+<form name="Feditinfo" method="post" action="<?=WEB_ABS_PATH?>/member/join.php" style="margin: 0 0 0 0;">
+<table width="100%" cellpadding="3" cellspacing="0" class="text">
+	
+	<tr>
+		<td colspan="2"><img src="<?=WEB_ABS_PATH?>/images/join_jaram_title.png" border="0"></td>
+	<tr>
+		<td>Login Name(ID)</td>
+		<td><input name="id" type="input" size="18" maxlength="12" value="" class="inputtext"/> ID는 영어로 해주세요</td>
+	</tr>
+	<tr>
+		<td>Real Name</td>
+		<td><input name="name" type="input" size="18" maxlength="12" value="" class="inputtext"/></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><input name="pass" type="password" size="18" maxlength="12" class="inputtext"/></td>
+	</tr>
+	<tr>
+		<td>Password(<font color="red">repeat</font>)</td>
+		<td><input name="re_pass" type="password" size="18" maxlength="12" class="inputtext"/></td>
+	</tr>
+	<tr>
+		<td>Email Address</td>	 
+		<td><input name="email" type="text" size="55" maxlength="255" value="" class="inputtext"/></td>
+	</tr>
+	<tr>
+		<td>Homepage</td>
+		<td><input name="homepage" type="text" size="55" maxlength="255" value="" class="inputtext"/></td>
+	</tr>
+	<tr>
+		<td>Cellular Phone</td>
+		<td><input name="phone1" type="text" size="55" maxlength="100" value="" class="inputtext"/></td>
+	</tr>
+<!-- 	<tr>
+		<td>Telephone</td>
+		<td><input name="phone2" type="text" size="55" maxlength="100" value="" class="inputtext"/></td>
+	</tr> -->
+<!-- 	<tr>
+		<td>ICQ address</td>
+		<td><input name="icq" type="text" size="25" maxlength="255" value="" class="inputtext"/></td>
+	</tr> -->
+	<tr>
+		<td>MSN address</td>
+		<td><input name="msn" type="text" size="25" maxlength="255" value="" class="inputtext"/></td>
+	</tr>
+<!-- 	<tr>
+		<td>YIM address</td>
+		<td><input name="yim" type="text" size="25" maxlength="255" value="" class="inputtext"/></td>
+	</tr> -->
+<!-- 	<tr>
+		<td>Signature</td>
+		<td><textarea name="sign" cols="54" rows="5" class="inputtext"></textarea></td>
+	</tr> -->
+	<tr>
+		<td colspan="2" align="center"><br/><a href="javascript:editinfo();"><img src="<?=WEB_ABS_PATH?>/images/button/btn_join.gif" border="0" alt="가입"/></a>&nbsp;&nbsp;
+		<a href="javascript:close()"><img src="<?=WEB_ABS_PATH?>/images/button/btn_cancel_2.gif" border="0" alt="창닫기"/></a>
+		</td>
+	</tr>
+</table>
+</form>
+<br/>
+</td>
+	<td width="10"><img src="<?=WEB_ABS_PATH?>/images/t.gif" height="1" width="10" alt="" /></td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+﻿<html>
+<head>
+<script language=JavaScript>
+function selectBoxFileAdd()
+{
+	var filename,tmp,filevalue,oOption;
+	if (document.fupload.attach_file.value)
+	{
+		tmp=document.fupload.attach_file.value;
+		for(i=0;i<tmp.length;i++) {
+			if(tmp.charAt(i)=='\\' ) {
+
+				k=i;
+			}
+		}
+		filename=tmp.substring(k+1,tmp.length);
+		oOption = document.createElement("OPTION");
+		oOption.text=filename+"("+document.fupload.fileSizeTemp.value+")";
+		oOption.value=document.fupload.attach_file.value;
+		document.flist.file_list.add(oOption);
+	}
+}
+function selectBoxFileDel()
+{
+	var selectedValue,i,temp;
+	temp=document.fupload.fileDataIn.value.split("|");
+	if (document.flist.file_list.selectedIndex>=0)
+	{
+		selectedValue =document.flist.file_list.options(document.flist.file_list.selectedIndex).value;
+		if(selectedValue != "-1")
+		{
+			for(i=1;i<document.flist.file_list.length;i++) 
+			{
+				if (document.flist.file_list.options[i].value==selectedValue)
+				{
+					document.flist.fileTempDel.value=temp[(i-1)*3+2];
+					flist.submit();
+					document.flist.file_list.remove(i);
+					selectBoxOutDel(i);
+					fileSizeAdd();
+					break;
+				}
+			}
+		}
+	}
+}
+function fileSizeAdd()
+{
+	var temp,i,addSize;
+	addSize=0;
+	temp=document.fupload.fileDataIn.value.split("|");
+	for(i=1;i<document.flist.file_list.length;i++) 
+	{
+		addSize+= temp[(i-1)*3+1] * 1;
+	}
+	if (addSize<1024)
+	{
+		document.flist.fileSizeAll.value=addSize+"B";
+	}
+	else if (addSize<1048576)
+	{
+		document.flist.fileSizeAll.value=Math.round(addSize/1024)+"KB";
+	}
+	else
+	{
+		document.flist.fileSizeAll.value=Math.round(addSize/1048576)+"MB";
+	}
+}
+function selectBoxOutDel(indexDel)
+{
+	var i,temp,reTemp;
+	reTemp="";
+	temp=document.fupload.fileDataIn.value.split("|");
+	for(i=1;i<=document.flist.file_list.length;i++) 
+	{
+		if (i != indexDel)
+			reTemp+=temp[(i-1)*3]+"|"+temp[(i-1)*3+1]+"|"+temp[(i-1)*3+2]+"|";
+	}
+	document.fupload.fileDataIn.value=reTemp;
+	document.flistResult.fileDataOut.value=reTemp;
+}
+function file_attach()
+{
+	if(document.fupload.attach_file.disabled==true) 
+	{
+		alert("더 이상 파일을 첨부할 수 없습니다.");
+		return ;
+	}
+	attach_init();
+	document.all.ATTMSG.style.top = document.body.scrollTop+ event.clientY;
+	document.all.ATTMSG.style.left = 200;
+	document.all.ATTMSG.style.visibility = "visible";
+	document.onstop = attach_done;
+	document.fupload.submit();
+	return ;
+}
+function attach_init()
+{
+	ATTMSG.document.open();
+	ATTMSG.document.write('<body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0><img src="http://image.hanmail.net/hm/savepop1.gif" width=242 height=59 border=0></body>');
+	ATTMSG.document.close();
+}
+function attach_done()
+{
+	document.all.ATTMSG.style.visibility = "hidden";
+}
+</script>
+</head>
+
+<body>
+<table>
+<iframe name='POPWIN' id='ATTMSG' style="position:absolute; left:-400px; top:-400px; width:242x; height:59px; z-index:1; visibility:hidden;" scrolling=no frameborder=0 width=242 height=59></iframe>
+
+<FORM target='POPWIN' name='fupload' enctype='multipart/form-data' method='post' action='upload.php'>
+<tr>
+	<td width=95 class=base>1. 파일찾기</td>
+	<td colspan=2><font face='굴림체'><input type=file value='찾아보기' size=35 name=attach_file></font></td>
+</tr>
+<input type='hidden' name='fileSizeTemp'>
+<textarea name='fileDataIn' rows='1' cols='1' style="position:absolute; left:-400px; top:-400px; z-index:1; visibility:hidden;"></textarea>
+</form>
+<FORM target='POPWIN' name='flist' enctype='multipart/form-data' method=post action='upload_delete.php'>
+<input type='hidden' name='fileTempDel'>
+<tr>
+	<td valign=top class=base>2. 목록에 추가 </td>
+	<td rowspan=2><font face='굴림체'>
+	<select name='file_list' size=5>
+		<option value="asd">---- 첨부될 파일목록(최대 10개) -----</option>
+	</select>
+	</font></td>
+	<td width=95 valign=top><input type=button value=' 첨부 ' onClick='file_attach();' ></td>
+</tr>
+<tr>
+	<td class=base>
+	총<font size=5> <input type=text name=fileSizeAll size=8 readonly="true"></font><br>
+	</td>
+	<td valign=bottom><input type=button value=' 삭제 ' onClick='selectBoxFileDel();' >
+	</td>
+</tr>
+<tr>
+</form>
+<FORM name='flistResult' enctype='multipart/form-data' method=post action='upload_result.php'>
+<textarea name='fileDataOut' rows='1' cols='1' style="position:absolute; left:-400px; top:-400px; z-index:1; visibility:hidden;"></textarea>
+	<td>
+	<input type=button value="확인" onClick='submit();'>
+	</td>
+</tr>
+</form>
+</table>
+
+</body>
+
+</html>

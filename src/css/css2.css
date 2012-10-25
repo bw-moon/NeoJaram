@@ -1,0 +1,437 @@
+		@charset 'utf-8';
+
+/**********************************************************************
+
+BASIC HTML ELEMENTS 
+
+**********************************************************************/
+body {color:#000; margin:0; padding: 0; background: url('../images/sub_menu_bg.gif') top left repeat-y;}
+select, input, textarea, button, a, body, td {font-family:Verdana,Lucida,sans-serif;font-size:12px; }
+textarea {line-height:1.6em;}
+hr { height:1px; border:solid 1px #ccc}
+a:link, a:active { color:#0063dc; text-decoration: none;}
+a:visited {	color:#0063dc; text-decoration: none;}
+a:hover {color:#0063dc; background:#d0d7dd;} 
+img,span,div img, span img, div span {vertical-align:middle; border:0px; }
+h1 {font-size:130%}
+h2 {font-size:120%}
+h3 {font-size:110%}
+h4 {font-size:105%}
+ul {margin:0;padding:0; list-style-type:none; }
+
+dl, li, form, h1, h2, h3, h4 {padding:0;margin:0;}
+
+span.link { cursor:pointer; }
+div.loading {vertical-align:middle; background:#CC0000; color:#fff; font-weight:bold; padding:3px; font-size:95%;position:absolute; top:0; right:0;line-height:15px;}
+
+caption  {text-align:left;font-size:110%;padding-bottom:5px;font-weight:bold;}
+
+strong.search {background: #FFFF99};
+
+/***********************************************************************
+STRUCTURE / LAYOUT 
+***********************************************************************/
+#container {margin:0; padding: 0;}
+
+#pageHead {clear:both; background: #d1d8de url('../images/page_header_bg.gif') repeat-x; height:55px;}
+#pageHead #jaramLogo { margin-top:19px; margin-left:14px; width:150px;float:left}
+#pageHead #jaramLogo a { font-family:arial, tahoma; font-size:115%; font-weight:bold; color:#000;}
+#pageHead #jaramLogo a:hover { background:transparent; }
+#pageHead #emblem {width:91px; height:55px; float:right; background:url('../images/main_menu_sym.gif') top left no-repeat}
+#pageHead #mainMenu {float:left;margin-top:22px; }
+#pageHead #mainMenu #topNav {	margin:0; padding:0;	list-style-type:none;}
+#pageHead #mainMenu #topNav li {	display:inline;	margin-right:20px;}
+#pageHead #mainMenu #topNav a { font-family:Verdana,Lucida,sans-serif;font-size:85%; color:#000;}
+#pageHead #mainMenu #topNav a:hover { background:transparent; font-weight:normal;text-decoration:underline;}
+
+#sideMenu {width:156px; position:absolute; top:55px; left:0;}
+#sideMenu p { text-align:center; margin:0px;}
+#sideMenu h2 { font-family:tahoma,Verdana; font-size:95%; border-bottom: 1px solid #999; color:#555; text-align:left; margin-top:10px; margin-bottom:5px; }
+#sideMenu div.side_container {width:140px; margin-left:8px; }
+
+#sideMenu #loginForm {margin-bottom:10px;}
+#sideMenu #loginForm #auto_login { margin-top:7px; margin-bottom:0px; }
+#sideMenu #loginForm #loginButton {width:100%; margin:7px 0 0 0;}
+#sideMenu #loginForm label {font-family:tahoma,Verdana; font-size:90%; }
+#sideMenu #loginForm input {font-size:80%}
+#sideMenu #loginForm #member_id, #sideMenu #loginForm #password {width:134px;}
+
+#sideMenu #SubMenu {padding-top:1px; font-family:Verdana,tahoma; font-size:100%; text-align:left;}
+#sideMenu #SubMenu a {font-size:10px;}
+#sideMenu #SubMenu #Nav a {height:15px;color: #000; text-decoration: none; background: #f1f1f1; border: 1px solid #f1f1f1; display: block; vertical-align: top;padding:3px;}
+#sideMenu #SubMenu #Nav a:hover { background: #dfdfdf; border: 1px solid #ccc;}
+#sideMenu #SubMenu #Nav a:active { background: #fff; border: 1px solid #ccc;}
+#sideMenu #SubMenu #NavId {height:15px;background: #fff;border: 1px solid #ccc; padding:3px;}
+#sideMenu #SubMenu #NavId a:hover { background:transparent;	}
+
+#sideMenu #messenger { text-align:left;}
+#sideMenu #messenger input { vertical-align:middle;}
+#sideMenu #messenger ul { padding:0; list-style-type:none; margin-top:0px; margin-left:0px; margin-right:0px; margin-bottom:10px;}
+
+#sideMenu #banners {padding-top:10px;}
+#sideMenu #banners ul {margin:0;padding:0; list-style-type:none; }
+#sideMenu #banners ul li {text-align:center; padding-bottom:4px; }
+
+
+#pageTitle {height:36px;margin:0 0 10px 156px;vertical-align:middle;background: #4682b4 url('../images/SubSide2.jpg') top right no-repeat;color:#fff;}
+#pageTitle h2 { margin-left:10px; margin-bottom:0px; padding-top:8px;}
+
+/*
+IE6에서는 width:100%로 해야 컨테이너가 고정된다.
+하지만 다른 브라우저에서는 컨테이너는 그냥 고정됨.
+*/
+#mainContent {margin-top:5px; margin-bottom: 30px; margin-right:172px; margin-left : 165px; line-height:1.6em}
+#mainContent a:visited { color: #848ea2; }
+#mainContent p img, #mainContent h2 img, #mainContent h3 img, #mainContent h4 img, #mainContent caption img, #mainContent td img, #mainContent div img{ vertical-align:middle;}
+
+#sideBar { position: absolute; right:5px; top:63px; width:157px;}
+#sideBar div.widget {  margin-bottom:10px; width:157px;}
+#sideBar div.widget div.widget_title { height:27px; background : url('../images/widget_bg_title.gif') top left no-repeat;}
+#sideBar div.widget div.widget_title_ { height:27px; background : url('../images/widget_bg_title.gif') top left no-repeat;}
+#sideBar div.widget div.widget_title_gray { height:27px; background : url('../images/widget_bg_title_gray.gif') top left no-repeat;}
+#sideBar div.widget div.widget_title_yellow { height:27px; background : url('../images/widget_bg_title_yellow.gif') top left no-repeat;}
+#sideBar div.widget div.widget_title_blue { height:27px; background : url('../images/widget_bg_title_blue.gif') top left no-repeat;}
+#sideBar div.widget div.widget_title_red { height:27px; background : url('../images/widget_bg_title_red.gif') top left no-repeat;}
+#sideBar div.widget div.widget_title_black { height:27px; background : url('../images/widget_bg_title.gif') top left no-repeat;}
+
+#sideBar div.widget                          h3 {background:transparent; font-size:90%; font-weight:normal; padding-top:5px; padding-left:8px; float:left; cursor: move; }
+#sideBar div.widget                          span.widget_tool {width:16px; float:right; padding: 6px 6px 0 0 ; cursor: pointer;}
+#sideBar div.widget div.widget_pref {background: #efefef; border-left: solid 1px #a5a6ad; border-bottom: solid 1px #a5a6ad; border-right: solid 1px #a5a6ad; padding:5px}
+#sideBar div.widget div.widget_pref .widget_input { width:110px;}
+#sideBar div.widget div.widget_content {background: #fff url('../images/widget_bg_down.gif') bottom left no-repeat; padding:5px;}
+#sideBar #widget_container {margin:18px 0 0 0; padding:0; list-style-type:none; min-height:400px;}
+#sideBar #widget_container .widget_manage { text-align:right; padding-bottom:4px;}
+
+
+body.index #sideBar { position: absolute; right:5px; top:60px; width:157px;}
+
+#footer { border-top:1px solid #999; height:40px; margin-right:170px; margin-left : 165px; padding-bottom:20px}
+#footer ul { margin-top:5px; list-style-type:none; }
+#footer ul li { display:inline;}
+#footer #copyright { float:left; margin-top:5px; font-size:90%}
+#footer #validation { float:right;}
+
+#mainContent #grid_system div {margin-bottom:20px;}
+
+
+/********************************************
+ Style Element
+ *******************************************/
+
+#debug { display:none;}
+
+
+#container .menu a, a.menu { color:#0063dc;}
+
+
+/**********************
+	Basic style reuse 
+***********************/
+.widget_color {border: solid 1px black}
+.widget_note {margin:0;padding:0;width:143px;white-space:pre-wrap;}
+.editor_field {width:143px}
+
+#mainContent a.sub { font-family:tahoma,Verdana; font-size:11px; color:#3886e6;}
+
+#container .sub { font-family:tahoma,Verdana; font-size:11px; color:#999;}
+
+#pager {	margin:0;	text-align:center;}
+
+.selected { background-color: #888; }
+.center {text-align:center}
+.floatRight {	float:right;}
+.floatLeft {	float:left;}
+.floatClear { clear:both;}
+.halfSize { width:49.5%;}
+.fullSize {width:99%}
+.big {font-size:140%}
+.impact {font-size:140%; font-weight:bold}
+.bold {font-weight:bold;}
+.small { font-family:Verdana, tahoma; font-size:10px;}
+.input { text-decoration : none;}
+.input_box {}
+.hot {color:red}
+.gridLeft { float:left; width:300px; margin-right:5px;}
+
+a:hover.button { background:transparent;	}
+
+
+.ver8 {font-family:verdana, tahoma;font-size:8px;}
+
+.size12 {font-size:12px;}
+
+.pager {margin:0; text-align:center;}
+
+.pager a {}
+
+div.message {
+  margin-top: 3pt;
+  color:#440000;
+  padding:5px;
+  padding-left:55px;
+  background: #E6F2FF url('../images/warn.png') 10px 10px no-repeat;
+  min-height: 40px;
+  height: auto !important;
+  border:1px solid #527691;
+  margin:5px 0 5px 0;
+}
+
+#mainContent div.info { height:31px; padding:0; margin:0 0 5px 0; background: #eaeaea url('../images/info_right.gif') top right no-repeat;}
+#mainContent div.info p {height:100%;padding: 7px 0 0 7px;margin:0;background: url('../images/info_left.gif') top left no-repeat;}
+#mainContent div.info span {padding: 4px 0 0 0;}
+#mainContent #widget_factory  {}
+#mainContent #widget_factory .widget_box {float:left; width:170px; border:solid 1px #888; background:#efefef; margin:10px; padding:10px; text-align:center;}	
+#mainContent dd {	margin: 3px 0 5px 0;}
+
+div.error {
+  margin-top: 3pt;
+  color:#440000;
+  padding:5px;
+  padding-left:55px;
+  background: #afc3d3 url('../images/error.png') 10px 10px no-repeat;
+  min-height: 40px;
+  height: auto !important;
+  border:1px solid #527691;
+  margin:5px 0 5px 0;
+}
+
+div.quote { background: #f8f8f8 url('../images/quote-open.png') no-repeat; padding-top: 12px; padding-left:20px;}
+div.error p, div.message p {margin:0; padding:0;}
+
+/* fancy_table */
+#fancy_table thead tr {height:25px;background:#fff url('../images/guide_bg.gif') top left repeat-x; font-size:10px; vertical-align:middle;}
+#fancy_table thead th {padding:0; margin:0}
+#fancy_table th.title_right {background:#fff url('../images/guide_right.gif') top right no-repeat}
+#fancy_table th.title_left {background:#fff url('../images/guide_left.gif') top left no-repeat}
+#fancy_table thead a { font-size:10px; text-decoration:underline;}
+#fancy_table { margin-bottom:10px;}
+#fancy_table tbody.mark_line tr:hover {background: #efefef}
+#fancy_table tbody td { padding:3px;}
+#fancy_table tbody td.sub_title { padding:5px 0 0 0;}
+
+/****************************************
+ 게시판 
+ ****************************************/
+#recent_comment li {vertical-align:top; background: url('../images/icons/comment.gif') no-repeat; padding-left:20px; margin-top:3px}
+
+#boardList #board { }
+
+#boardList #board .boardHeader th { height:20px;	font-family:verdana, tahoma;	font-size:10px;	background-color:#555;	color:#fff;	font-weight:bold;	padding:5px;	border-bottom:3px solid #ccc;}
+#boardList #board .boardHeader a {	font-size:100%;	color:#fff;	text-decoration:underline;}
+#boardList #board .boardHeader {	border-bottom:1px solid #444;}
+#boardList #board tr {	border-bottom:1px solid #000;}
+#boardList #board td {	padding:5px;	border-bottom:1px solid #CCC;}
+
+#boardList #boardSearch {	margin-top:10px;	text-align:center;}
+#boardList #boardSearch input {	vertical-align:middle;}
+
+
+#boardView #boardViewHead td{	vertical-align:top;}
+#boardView #boardViewHead ol {	margin:0;	padding:0;}
+#boardView #boardViewHead li {	margin-left:5px;}
+
+#boardView #boardComments img {	vertical-align:middle;}
+#boardView #boardComments dd {	margin-bottom:20px}
+#boardView #boardComments dt {	background:#efefef url('../images/comment_bar.gif') top right repeat-y; }
+#boardView #boardComments dt img {	background-color:#fff;	padding-right:5px;border-right:solid 1px #888}
+
+
+#boardView #comment_form textarea.input_box {	width:98%;}
+#boardView #commentForm {	margin-bottom:20px;}
+
+#boardView #boardContentText {padding-top:10px;padding-bottom:20px}
+
+#boardForm #boardInputForm input.input, #boardForm #boardInputForm textarea.input_box {width:98%}
+#boardForm #boardInputForm input {	vertical-align:middle;}
+#boardForm #file_list {	width:430px;}
+
+
+#boardTool {	margin-top:10px;	margin-bottom:20px;	padding-bottom:0;	text-align:right;	font-weight:bold;}
+#boardTool a:visited {	color: #039;}
+#boardTool select {vertical-align:middle;}
+#boardTool #articleMover {	float:left;}
+
+
+/*********************************
+	mainContent의 기본적인 세팅
+ **********************************/
+ 
+#frontToolbar {
+	margin:0;
+	padding:0;
+}
+ 
+#frontToolbar li {
+	display:inline;
+	margin-right:5px;
+}
+
+#mainContent h3 {	
+	margin:0px 0 0 0;
+	background: transparent url("../images/div_grad.gif") 0 20px repeat-x;
+	padding-top:0;
+	padding-bottom:15px;
+}
+
+#mainContent h4 {
+	margin:0;
+	padding:0;
+}
+
+#mainContent p {
+	margin:10px 0 10px 0;
+}
+
+#mainContent ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;	
+}
+
+/*********************
+  스케줄러 
+**********************/
+#scheduler {
+	border-top: 1px solid #999;
+	border-left: 1px solid #999;
+	border-collapse: collapse;
+}
+
+#scheduler th, #scheduler td {
+
+	padding: 5px;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+}
+
+#scheduler thead {
+	font-family:Georgia,sans-serif;
+	font-size:16px;
+	font-weight:bold;
+	background-color:#c3d5ef;
+	text-align:center;
+}
+
+#scheduler {
+	min-height:40px;
+}
+
+#scheduler td.scheduled {
+	background-color:#abd3ff;
+}
+
+#scheduler td.holiday, #scheduler td.holiday2 {
+	background-color:#e3e3e3;
+}
+
+#scheduler td.today {
+	background-color:#fcd97d;
+}
+
+#scheduler td.other_month {
+	background-color:#f4f4f4;
+	color:#888;
+}
+
+
+#scheduler td.blank {
+}
+
+
+#scheduler tbody {
+	vertical-align:top;
+}
+
+.holiday {
+	color:red;
+}
+.holiday2 {
+	color:blue;
+}
+
+a.holiday{
+	font-family:Georgia,serif;
+	font-size:15px;
+	font-weight:bold;
+	color:red;
+}
+
+a.blank {
+	font-family:Georgia,serif;
+	font-size:15px;
+	font-weight:bold;
+}
+
+a.scheduled, a.holiday2, a.today {
+	font-family:Georgia,serif;
+	font-size:15px;
+	font-weight:bold;
+
+	color:blue;
+}
+
+a.other_month {
+	font-family:Georgia,serif;
+	font-size:15px;
+	font-weight:bold;
+	color:blue;
+}
+
+
+#jaram_one_line_msg {clear:both; height:31px;background: #eaeaea url('../images/info_right.gif') top right no-repeat;margin-bottom:8px;}
+#jaram_one_line_msg div.msg {height:31px;line-height:31px;float:left; background:url('../images/info_left.gif') top left no-repeat;}
+#jaram_one_line_msg div.msg span {padding-left:20px; padding-bottom:1px; width:16px; margin-left:8px}
+#jaram_one_line_msg div.msg span.information {background:	top left url('../images/icons/information.gif') no-repeat}
+#jaram_one_line_msg div.msg span.exclamation {background:	top left url('../images/icons/exclamation.gif') no-repeat}
+#jaram_one_line_msg div.msg span.error {background:	top left url('../images/icons/error.gif') no-repeat}
+#jaram_one_line_msg div.tools {height:16px;width:16px;float:right;margin-top:7px;margin-right:5px}
+
+
+/*********************
+plane 세미나 토픽들 출력
+**********************/
+#plane_view {margin-top:10px; margin-left:5px; padding-left:5px; margin-bottom:10px; border-left:solid 4px #efefef}
+#plane_view ul li {margin-left:18px;list-style-type:disc;}
+#plane_view ul li ul li {margin-left:18px;list-style-type:circle;}
+#plane_view h1 {background:transparent;font-size:20px;margin-top:4px}
+#plane_view h2 {background:transparent;font-size:18px;margin-top:4px}
+#plane_view h3 {background:transparent;font-size:16px;margin-top:4px}
+#plane_view h4 {background:transparent;font-size:14px;margin-top:4px}
+#plane_view h5 {background:transparent;font-size:12px;margin-top:4px}
+
+
+
+
+/* 
+ 세미나
+*/
+#seminar_comments .seminar_comment {border:1px solid #bfbfbf; background:#f4f4f4; padding:5px; margin-bottom:5px}
+#seminar_paper {margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #bfbfbf}
+
+
+
+/*
+ fckeditor
+*/
+
+.Bold
+{
+	font-weight: bold;
+}
+
+.Title
+{
+	font-weight: bold;
+	font-size: 18px;
+	color: #cc3300;
+}
+
+.Code
+{
+	border: #8b4513 1px solid;
+	padding-right: 5px;
+	padding-left: 5px;
+	color: #000066;
+	font-family: 'Courier New' , Monospace;
+	background-color: #ff9933;
+}

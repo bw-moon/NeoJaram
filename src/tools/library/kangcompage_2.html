@@ -1,0 +1,2558 @@
+
+<html>
+<head>
+<title>IT의 힘. 강컴!</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-KR">
+<link rel="STYLESHEET" type="text/css" href="/css/style.css">
+<script language="javascript" src="/my/js/viewBlg.js"></script>
+<script language="javascript" src="/my/js/blogmain.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+var review_win;
+//use blog-------------------------------------------------
+function resizeImg(num)
+{
+	var width = eval('document.all.blgImgId'+num+'.width');
+	if( width > 550 )
+	{
+		eval('document.all.blgImgId'+num+'.width = 550');
+	}
+}
+
+function blgImgView(who, file, imgid)
+{	
+	var blgImgWin;
+	var blgImgWinOption = "width=10,height=10, toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no, top=100,left=100";
+	if( blgImgWin == null || blgImgWin.closed )
+	{
+		blgImgWin = open("/my/popup/blgImgView.asp?par="+who+"&img="+file, "blgImgWin" , blgImgWinOption, true);
+		blgImgWin.focus();
+	}
+
+}
+//-------------------------------------------------
+
+function copyTxt(val){
+	if (val !="" && val !=null){
+		var copyObj = eval("document.copyFrm.copy"+val+".createTextRange()");
+		copyObj.execCommand('copy');	
+	}
+}
+function popupDeliInfo(){
+	var popInfo;
+	var popWinOption = "width=400,height=600, toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no, top=100,left=100";
+		
+	if( popInfo == null || popInfo.closed )
+	{
+		popInfo = open("/common/bookinfo/popupDeliInfo.asp", "WinView" , popWinOption, true);
+		popInfo.focus();
+	}
+}
+function popupImg(locat)
+{	
+	var popWin;
+	var popWinOption = "width=600,height=600, toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no, top=100,left=100";
+		
+	if( popWin == null || popWin.closed )
+	{
+		popWin = open("/common/bookinfo/popupImg.asp?img="+locat, "WinView" , popWinOption, true);
+		popWin.focus();
+	}
+}
+function popupImg2nd(locat)
+{	
+	var popWin;
+	var popWinOption = "width=600,height=600, toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes, top=100,left=100";
+		
+	if( popWin == null || popWin.closed )
+	{
+		popWin = open("/common/bookinfo/popupImg2nd.asp?img="+locat, "WinView" , popWinOption, true);
+		popWin.focus();
+	}
+}
+function popupImg3rd(cnt, sku)
+{	
+	var popWin;
+	var popWinOption = "width=500,height=600, toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes, top=100,left=100";
+		
+	if( popWin == null || popWin.closed )
+	{
+		popWin = open("/common/bookinfo/popupImg3rd.asp?cnt="+cnt+"&sku="+sku, "WinView" , popWinOption, true);
+		popWin.focus();
+	}
+}
+function review_write(sku)
+{	
+	var winopt = "Width=660,Height=670,scrollbars=1,resizable=yes,top=10,left=200";
+		
+	if( review_win == null || review_win.closed )
+	{
+		review_win = open("/common/review/review_write.asp?sku=" + sku,"", winopt,true);
+		review_win.focus();
+	}
+}
+function review_read(seqid,sku)
+{	
+	var winopt = "Width=660,Height=700,scrollbars=1,resizable=yes,top=10,left=200";
+		
+	if( review_win == null || review_win.closed )
+	{
+		review_win = open("/common/review/review_read.asp?sku=" + sku+"&seqid="+seqid,"", winopt,true);
+		review_win.focus();
+	}
+}
+//-->
+</script>
+</head>
+<script language="javascript" src="/java/menu.js"></script>
+<script language="javascript" src="/js/hiddenscroll.js"></script>
+
+<body bgcolor="white" onresize="oriexp()" onLoad="initialize();oriexp();" marginwidth="5" marginheight="0" leftmargin="5" rightmargin="5" topmargin="0" link="Black" vlink="Black">
+
+<script language="JavaScript">
+<!--
+//----------------------------------------------------------------
+function initFocus()
+{
+	document.S_frm.s_text.focus();
+}
+//----------------------------------------------------------------
+function chk_length(v,s,e)
+{
+	var vsize = getByteLength(v);
+	if (vsize<s || vsize>e) {
+		return false;
+	}
+	return true;
+}
+//----------------------------------------------------------------
+function getByteLength(str){
+	var len = 0;
+	if ( str == null ) return 0;
+	for(var i=0;i<str.length;i++){
+		var c = escape(str.charAt(i));
+		if ( c.length == 1 ) len ++;
+		else if ( c.indexOf("%u") != -1 ) len += 2;
+		else if ( c.indexOf("%") != -1 ) len += c.length/3;
+	}
+
+	return len;
+}
+//----------------------------------------------------------------
+function ltrim(str){
+	var s = new String(str);
+
+	if (s.substr(0,1) == " ")
+		return ltrim(s.substr(1));
+	else
+		return s;
+}
+//----------------------------------------------------------------
+function rtrim(str){
+	var s = new String(str);
+	if(s.substr(s.length-1,1) == " ")
+		return rtrim(s.substring(0, s.length-1))
+	else
+		return s;
+}
+//----------------------------------------------------------------
+function trim(str){
+	return ltrim(rtrim(str));
+}
+//----------------------------------------------------------------
+function check_text()
+{
+	var searchWord;
+	searchWord = trim(S_frm.s_text.value);
+	if (!chk_length(searchWord,2,101)){
+		alert("검색어를 확인하여 주십시오.\n\n허용된 글자수 범위\nㆍ한글 1자 이상\nㆍ영문 2자 이상");
+		S_frm.s_text.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+//--------------------------------
+function category_change_go(form) 
+{
+var string="";
+	var myindex=frm_directgo.browse.selectedIndex;
+	location=string + form.browse.options[myindex].value;
+}
+//-->
+</script> 
+
+
+
+<!--상단 로고 및 기본메뉴 시작-->
+<table cellpadding="0" cellspacing="0" border="0" width=100%>
+<tr>
+
+<td width=20% valign=bottom><a href="http://kangcom.com"><img src="/img/top/kc_logo.gif" border=0></a></td>
+
+<td align="right">
+	<table cellpadding="0" cellspacing="0" border="0"><tr>
+	<td><a href="http://kangcom.com/event/c-member.asp"><img src="/img/banner/coupon_banner.gif" border=0></a></td>
+	<td width=2></td>
+	<!--<td><a href="http://kangcom.com/event/awards/"><img src="/img/banner/award_banner.gif" border=0></a></td>
+	<td width=2></td>-->
+	<td><a href="http://kangcom.com/book/excellent/200408050002/"><img src="/img/top/up-excellent.gif" border=0></a></td></tr>
+	</table>
+</td>
+
+<td width=400 align=right valign=bottom>
+	<table cellpadding="0" cellspacing="0" border="0">
+	<tr><td><a href="http://kangcom.com/common/about/map.asp"><img src="/img/top/kangcomcat.gif" border=0></a></td></tr>
+	</table>
+
+	<table width="400" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+	<td align=right>
+	
+	<a href="http://kangcom.com/common/member/login.asp"><img src="/img/top/b-login.gif" border=0 align=absmiddle vspace=2></a>
+	<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+	<a href="http://kangcom.com/common/member/m_certif.asp"><img src="/img/top/b-mem.gif" border=0 align=absmiddle vspace=2></a>
+	
+
+	<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+	<a href="http://kangcom.com/common/basket/cart.asp?tC=14"><img src="/img/top/b-basket.gif" border=0 align=absmiddle vspace=2></a>
+	<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+	<a href="https://kangcom.com/common/myzone/sos/soslist.asp"><img src="/img/top/b-do.gif" border=0 align=absmiddle vspace=2></a>
+	<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+	<a href="https://kangcom.com/common/myzone/default.asp?tC=14"><img src="/img/top/b-page.gif" border=0 align=absmiddle vspace=2></a>
+	<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+	<a href="http://kangcom.com/common/supportcenter/default.asp?tC=14"><img src="/img/top/b-help.gif" border=0 align=absmiddle vspace=2></a>
+	<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+	<a href="http://kangcom.com/common/about/history.asp?tC=14"><img src="/img/top/b-about.gif" border=0 align=absmiddle vspace=2></a></nobr>&nbsp;&nbsp;&nbsp;
+	</td>
+	</tr>
+	</table>
+
+</td>
+
+</tr>
+</table>
+<!--상단 로고 및 기본메뉴 종료-->
+
+
+
+<!-- 상위 탭메뉴 시작 ------------------------->
+<table cellpadding="0" cellspacing="0" border="0" width=100%>
+<tr>
+<td background="/img/top/main_back.gif">
+	<table cellpadding="0" cellspacing="0" border="0" width=100%>
+	<tr>
+	<td valign=bottom width=7><img src="/img/top/l_mo.gif" border=0></td>
+			
+	<td width=60>&nbsp;</td>
+	<td>
+		<table cellpadding="0" cellspacing="0" border="0">
+		<tr>
+		<td valign=bottom><a href="http://kangcom.com/"><img src="/img/top/i-welcome.gif" border=0></a></td>
+		<td valign=bottom><a href="http://kangcom.com/book/internal/"><img src="/img/top/i-itbook1.gif" border=0></a></td>
+		<td valign=bottom><a href="http://kangcom.com/book/original/"><img src="/img/top/i-origin.gif" border=0></a></td>
+		<td valign=bottom><a href="http://kangcom.com/designm/default_new.asp"><img src="/img/top/i-design.gif" border=0></a></td>
+		<td valign=bottom><a href="http://kangcom.com/book/general/"><img src="/img/top/i-general.gif" border=0></a></td>
+		<td valign=bottom><a href="http://kangcom.com/book/ebook/"><img src="/img/top/i-ebook.gif" border=0></a></td>
+		<!--
+		<td valign=bottom><a href="http://kangcom.com/book/biz/"><img src="/img/top/i-biz.gif" border=0></a></td>
+    	<td valign=bottom><a href="http://kangcom.com/book/gen/"><img src="/img/top/i-gen.gif" border=0></a></td>
+		--> 
+		<td valign=bottom><a href="http://kangcom.com/book/outlet/"><img src="/img/top/i-oulet.gif" border=0></a></td> 
+				
+		<td valign=bottom><a href="http://kangcom.com/book/review/"><img src="/img/top/i-review2.gif" border=0></a></td>
+		<!--
+		<td valign=bottom><a href="http:///blog/"><img src="/img/top/i-blog.gif" border=0></a></td>-->
+		<!--td valign=bottom><a href="http://kangcom.com/book/beginner/"><img src="/img/top/i-dev.gif" border=0></a></td>
+		<td valign=bottom><a href="http://kangcom.com/book/beginner/default_design.asp"><img src="/img/top/i-designer.gif" border=0></a></td-->
+		</tr>
+		</table>
+	</td>				
+			
+	<td valign=bottom width=7><img src="/img/top/r_mo.gif" border=0></td>
+	</tr>
+	</table>
+</td>			
+</tr>
+</table>
+<!-- 상위 탭메뉴 끝 ------------------------->
+
+
+
+<script language="javascript">
+	function link_change_go(form)
+	{
+		var myindex, locat;
+		myindex = form.link.selectedIndex;
+		locat = form.link.options[myindex].value;
+
+		if(locat.length < 1){
+			return;
+		}else{
+			location.href= locat;
+		}
+	}
+</script>
+
+
+
+
+<!-- 상위 탭메뉴의 하위메뉴 시작 ------------------------->
+<table cellpadding="0" cellspacing="0" border="0" width=100% height=26 background="/img/top/sub_back.gif">
+<tr>
+<td width=20>&nbsp;</td>
+<td>
+	<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+
+	<td width=60>&nbsp;</td>
+	<td><a href="http://kangcom.com/book/new/default.asp"><nobr><font color=#27251C>신간도서</font></nobr></a></td>
+	<td width=15 align=center><img src="/img/top/dot_line.gif"></td>
+	<td><a href="http://kangcom.com/book/best/default.asp"><nobr><font color=#27251C>베스트셀러</font></a></nobr></td>
+	<td width=15 align=center><img src="/img/top/dot_line.gif"></td>
+	<td><a href="http://kangcom.com/book/series/default.asp"><nobr><font color=#27251C>시리즈도서</font></a></nobr></td>
+	<td width=15 align=center><img src="/img/top/dot_line.gif"></td>
+	<td><a href="http://kangcom.com/book/category/step_01.asp?fst_code=09"><nobr><font color=#27251C>IT수험서</font></a></nobr></td>
+	<td width=15 align=center><img src="/img/top/dot_line.gif"></td>
+	<td><a href="http://kangcom.com/book/magazine/"><nobr><font color="#27251C">IT 잡지</font></a></nobr></td>
+	<td width=15 align=center><img src="/img/top/dot_line.gif"></td>
+	<td><a href="http://kangcom.com/book/firstanni/step_all.asp"><nobr><font color=#27251C>출간첫돌(20%↓)</font></a></nobr></nobr></td>
+	<td width=15 align=center><img src="/img/top/dot_line.gif"></td>
+	<td><a href="/book/project/project_list.asp?pr_code=41"><nobr><font color="#27251C">기획도서</font></a></nobr></td>
+	<td width=15 align=center><img src="/img/top/dot_line.gif"></td>
+	<td><a href="http://kangcom.com/benchmark/200410/"><nobr><font color="#1E7E00"><b>마소</b></font><font color="#F46200">벤치마크</font></a></nobr></td>
+	<td width=15 align=center><img src="/img/top/dot_line.gif"></td>
+	<td><nobr><a href="http://kangcom.com/common/calendar/calendar.asp"><img src="/img/top/cal.gif" border=0></a></nobr></td>
+	<td width=15 align=center><img src="/img/top/dot_line.gif"></td>
+	<td><nobr><a href="http://kangcom.com/event#event"><B><font color=F100FA>이</font><font color=FF4200>벤</font><font color=green>트</font></B></nobr></td>
+
+
+	</tr>
+	</table>
+</td>
+
+<form name="PubLinkFrm" method="post">
+<td width=200 align="right">
+	<select name="link" onchange="link_change_go(this.form);" style="background-color:white; font-size: 12; color: black; font-family: 돋움">
+	<option value="">출판사 Special</option>
+	<option value="">---------------</option>
+	<option value="">국내 출판사</option>
+	<option value="">---------------</option>
+	<option value="http://kangcom.com/book/publish/ganamsa/">가남사</option>
+	<option value="http://kangcom.com/book/publish/daerim/">대림</option>
+	<option value="http://kangcom.com/book/publish/scitech/">사이텍미디어</option>
+	<option value="http://kangcom.com/book/publish/sungahn/">성안당/사이버</option>
+	<option value="http://kangcom.com/designm/book/publish/ahn/">안그라픽스</option>
+	<option value="http://kangcom.com/book/publish/acorn/">에이콘</option>
+	<option value="http://kangcom.com/book/publish/youngjin/">영진.COM</option>
+	<option value="http://kangcom.com/book/publish/info/">인포북</option>
+
+	<option value="http://kangcom.com/book/publish/jungbo/">정보문화사</option>
+	<option value="http://kangcom.com/book/publish/hanbit/">한빛미디어</option>
+	<option value="http://kangcom.com/book/publish/pearson/">피어슨에듀케이션</option>
+	<option value="http://kangcom.com/book/publish/freelec/">프리렉</option>
+	<option value="">---------------</option>
+	<option value="">해외 출판사</option>
+	<option value="">---------------</option>
+	<option value="http://kangcom.com/wiley/">Wiley</option>
+	</select>				
+</td>
+</form>
+<td><img src="/img/main/space.gif" width=15 height=1></td>
+</tr>
+</table>
+<!-- 상위 탭메뉴의 하위메뉴 끝 ------------------------->
+
+
+
+
+<!-- 검색 및 기타메뉴 시작 ------------------------->
+<table cellpadding="0" cellspacing="0" border="0" width=100% height=33 background="/img/top/search_back.gif">
+<tr>
+<td width=40%>
+	<!-- search start -->
+	<table cellpadding="0" cellspacing="2" border="0">
+	<form name=S_frm action="http://kangcom.com/common/qsearch/search.asp" method=post onsubmit="return check_text();">
+	<tr>
+	<td width=10>&nbsp;</td>
+	<td>
+	
+		<select name="s_option">
+		<option value="all" >전체</option>
+		<option value="internal" >국내서</option>
+		<option value="external" >원서</option>
+		</select>
+	</td>
+	<td>
+		<select name="s_flag">
+		<option value="T" >도서명,ISBN</option>
+		<option value="A" >저자,역자</option>
+		<!--option value="H" selected>역&nbsp;&nbsp;&nbsp;자</option-->
+		<option value="P" >출&nbsp;&nbsp;판&nbsp;&nbsp;사</option>
+		<!--option value="I" selected>ISBN</option-->
+		<option value="B" >바&nbsp;&nbsp;코&nbsp;&nbsp;드</option>
+		</select>
+	</td>
+	<td><input name="s_text" type="text" size="18" maxlength="50" style="text-align: center;"></td>
+	<td><input type="image" src="/img/top/search.gif" alt="빠른찾기" border=0 hspace="1"></td>
+	<td>&nbsp;</td>
+	<td><a href="http://kangcom.com/common/search/default.asp"><nobr><img src="/img/top/b-search.gif" border=0  align=absmiddle hspace=3></a></nobr>
+	</tr>
+	</form>
+	</table>
+	<!-- search end -->
+</td>
+		
+<td width=20% align=center>
+	<table cellpadding="0" cellspacing="0" border="0"><tr>
+	<td><a href="/common/member/m_certif.asp"><img src="/img/top/bemember.gif" border=0></a></td>
+	</tr>
+	</table>
+</td>
+
+<td width=40% align=right>
+	<nobr><a href="http://kangcom.com/book/review/"><img src="/img/top/b-review.gif" border=0 align=absmiddle vspace=2></a>
+	<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+	<a href="http://kangcom.com/common/bbs_study/bbs_list.asp"><img src="/img/top/b-study.gif" border=0 align=absmiddle vspace=2></a>
+	<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+	<a href="http://kangcom.com/common/bbs_free/bbs_list.asp"><img src="/img/top/b-free.gif" border=0 align=absmiddle vspace=2></a>
+	<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+	<a href="http://kangcom.com/common/about/orderinfo.asp"><img src="/img/top/b-b2b.gif" border=0 align=absmiddle vspace=2></a>
+	<img src="/img/main/space.gif" width=18 height=1>
+</td>
+</tr>
+</table>
+<!-- 검색 및 기타메뉴 끝 ------------------------->
+
+
+
+
+
+<table cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td height=1 bgcolor=#9D9789></td></tr>
+</table>
+
+
+<!--  인기검색도서 및 트랜트 시작-->
+<table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#FAF8F3" align="center">
+<tr>
+
+<td width=45%>
+<iframe name="popularBook" marginwidth="0" marginheight="0" noresize frameborder="0" width="100%" height="26" scrolling="no" src="/popularBook.asp?pStr=<a href=javascript:popuGo('200409040001'); class='cls0'>소프트웨어 프로젝트에서의 리스크 관리</a><br><a href=javascript:popuGo('200409080003'); class='cls0'>소설같은 자바 2/E : 두번째 이야기</a><br><a href=javascript:popuGo('200408260001'); class='cls0'>좋은 코딩, 나쁜 코딩: 읽기 쉬운 코드가 좋은 코드다</a><br><a href=javascript:popuGo('200303250003'); class='cls0'>열혈강의 TCP/IP 소켓 프로그래밍</a><br><a href=javascript:popuGo('200407160007'); class='cls0'>코드 한 줄없는 IT 이야기</a><br>">
+</iframe>
+</td> 
+
+
+<!--td><img src="/img/main/space.gif" width=1 height=1 align=absmiddle></td-->
+<td width=30% align=left><a href="/book/beginner/"><img src="/img/top/c-dev.gif" border=0 align=absmiddle vspace=2></a>
+<img src="/img/top/nbar.gif" border=0 align=absmiddle vspace=2 hspace=2>
+<a href="/book/beginner/default_design.asp"><img src="/img/top/c-designer.gif" border=0 align=absmiddle vspace=2></a></td>
+
+<form name="specialFrm" method="post">
+<td width=25% align="right">
+	<select name="link" onchange="link_change_go(this.form);" style="background-color:white; font-size: 12; color: black; font-family: 돋움">
+	<option value="">자주 가는 분야</option>
+	<option value="">----------------</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=042&ar=2">JAVA</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=037&ar=2">.Net</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=038&ar=2">Language</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=18&ar=1">Database</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=07&ar=1">Network</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=040&ar=2">Science</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=170&ar=2">Oracle</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=014&ar=2">Unix/Linux</option>		
+	<option value="http://kangcom.com/common/specialAreas/?ac=058&ar=2">Game</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=14&ar=1">e-Biz</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=065&ar=2">국내 수험서</option>
+	<option value="http://kangcom.com/common/specialAreas/?ac=066&ar=2">국제 수험서</option>
+	</select>
+</td>
+</form>
+<td><img src="/img/main/space.gif" width=12 height=1></td>
+</tr>
+</table>
+
+<!--  7BEC85, 7BEC85, C3EE6F, FAF8F3, 498ACC -->
+<!--table cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td height=1 bgcolor=#9D9789></td></tr></table> -->
+
+
+
+<!-- event bar start-->
+<!--##
+<table cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td height=1 bgcolor=#124148></td></tr></table> 
+
+<table cellpadding="0" cellspacing="0" border="1" width=100% bgcolor=#094E30 align=center>
+<tr>
+<td align=center>
+	<table cellpadding="0" cellspacing="0" border="0" align=center>
+##-->
+	<!--td align=center><a href="/event/daelim_20040614/"><img src="/img/banner/j-daelim.gif" border=0></a></td>
+	<td width=1></td-->
+	<!--td align=center><a href="/event/minpress_20040701/"><img src="/img/event/j-minpress.gif" border=0></a></td>
+	<td width=1></td>
+	<td align=center><a href="/event/jabook_novel/"><img src="/img/event/j-jabook.gif" border=0></a></td-->
+<!--##
+	<td width=1></td>
+##-->
+	<!--td align=center><a href="/event/scitech_20040427/"><img src="/img/event/j-scitech.gif" border=0></a></td>
+	<td width=1></td-->
+<!--##
+	<td align=center><a href="/book/project/project_list.asp?pr_code=71"><img src="/img/event/j-1.gif" border=0></a></td>
+	<td width=1></td>
+	<td align=center><a href="/event/sung_20040816/"><img src="/img/event/j-sung_review.gif" border=0></a></td>
+	<td width=1></td>
+	<td align=center><a href="/event/magazine/"><img src="/img/event/j-1000.gif" border=0></a></td>
+	<td width=1></td>
+	<td align=center><a href="/event/review/"><img src="/img/event/j-review.gif" border=0></a></td>
+	<td width=1></td>
+##-->
+	<!--td align=center><a href="/event/acorn_embedded/"><img src="/img/event/j-acorn.gif" border=0 hspace=1></a></td>
+	<td align=center><a href="/book/project/project_list.asp?pr_code=131"><img src="/img/event/j-unix.gif" border=0></a></td> -->
+<!--##
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+##-->
+<!--event bar end-->
+
+<table cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td height=1 bgcolor=#D6D0C2></td></tr>
+</table>
+
+
+
+
+<table cellpadding=0 cellspacing=0 border=0><tr><td valign=top height=3></td></tr></table>
+
+
+<!--partnerId : --><!--Session(PartnerID) : 0--><!--Session(PartnerMID) : --><!--Session(PartnerJNo) : --><!--Session(IsConfirm) : -->
+
+<table cellpadding="0" cellspacing="0" border="0" width="90%" align="center">
+<tr><td height=5></td></tr></table>
+		
+
+	<script language=javascript>
+//	function oriexp(){
+//		xs_pdEx();
+//	}
+	</script>
+
+	<script language=javascript>
+	function oriexp(){}
+	</script>
+
+
+
+
+
+<!-----table cellpadding="0" cellspacing="0" border="0" width="98%">
+<form name="copyFrm">
+<tr>
+<TD width="15"><img src="/img/space.gif" width="15"></TD>
+<td class="title1" width=35><img src="/img/center/arrow_d.gif" border="0" hspace="2"></td>
+<td><a href="javascript:copyTxt('title');" onfocus="this.blur()" style="text-decoration: none;" onmouseover="(window.status='클릭하시면 도서명이 복사됩니다');return true;" onmouseout="(window.status='');"><input type="hidden" id="copytitle" value=""></a></td>
+</tr>
+</table----->
+
+
+<TABLE cellpadding="0" cellspacing="0" border="0" WIDTH="100%">
+<TR>
+<TD VALIGN="TOP" width="100%">
+
+
+<!--hard coding----------------------------------------------------------------------------------------------------------->
+	<table cellpadding="1" cellspacing="0" border="0" width=100%>
+	<form name="copyFrm">
+	<tr>
+	<td bgcolor="#bababa">
+		<table cellpadding="4" cellspacing="0" border="0" width=100%>
+		<tr>
+		<td bgcolor="#f3f3f3">
+
+			<table cellpadding="3" cellspacing="0" border="0" width=100%>
+			<tr>
+			<td bgcolor="white">
+				<table cellpadding="4" cellspacing="0" border="0" width="100%" bgcolor="#f9f9f9">
+				<tr>
+				<td><img src="/img/space.gif" width="10"></td>
+				<td width=100%><a href="javascript:copyTxt('title');" onfocus="this.blur()" style="text-decoration: none;" onmouseover="(window.status='클릭하시면 도서명이 복사됩니다');return true;" onmouseout="(window.status='');"><font face=돋움 color=#ff6600><b></b></font><font face=돋움 color=#000000 size=2></font><font face=돋움 color=#000000 size=3><b>C++ How To Program, 4판</b></font><font face=돋움 color=#000000 size=2></font><input type="hidden" id="copytitle" value="C++ How To Program, 4판"></a></td>
+				<td><img src="/img/space.gif" width="10"></td>
+				</tr>
+				</table>
+			</td>
+			</tr>
+			</table>
+
+			<!--bookinfo inner-->
+						<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor=white>
+			<tr><td colspan=2 height=20></td></tr>
+			</table>
+
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" align="center" bgcolor=white>
+<!--1줄-->
+			<tr>
+<!--1칸-->
+<!----- 책이미지 ----->
+			<td width="150" align="center" valign="top">
+			
+			<img src="/l_pic/200309190004.jpg" border="1" vspace="3" width="90">
+			
+				<!--br><img src="/img/book/big_view.gif" alt="큰도서이미지보기" border="0" style="cursor:hand" onclick="content_view('')"-->
+				<br><img src="/img/book/big_view.gif" alt="큰도서이미지보기" border="0" style="cursor:hand" onclick="popupImg('/b_pic/200309190004.jpg')">
+			
+			</td>
+							
+
+<!--2칸-->	
+<!----- 저자 / 역자 / 출판사 / 판매가 / 마일리지 / 기타 ----->
+			<td valign="top">
+				<table cellpadding="0" cellspacing="2" border="0">
+
+
+			
+				<tr><!--저자-->
+				<td width="63"><img src="/img/book/i-writer.gif" border=0></td>
+				<td valign="top">
+				
+						<a href="/common/author/default.asp?author_id=9969">Harvey M. Deitel</a>
+						
+						, <a href="/common/author/default.asp?author_id=10265">Paul J. Deitel</a>
+						
+				</td>
+				</tr>
+			
+				<tr><!--역자-->
+				<td><img src="/img/book/i-trans.gif" border=0></td>
+				<td valign="top">
+				
+						<a href="/common/translator/default.asp?author_id=9434">김영근</a>
+						
+						, <a href="/common/translator/default.asp?author_id=24033">강성철</a>
+						
+						, <a href="/common/translator/default.asp?author_id=24034">박유찬</a>
+						
+				</td>
+				</tr>
+					
+
+
+				<tr><!--출판사-->
+				<td><img src="/img/book/i-publish.gif" border=0></td>
+				<td><a href="/common/publisher/default.asp?publisher=753">피어슨에듀케이션코리아</a></td>
+				</tr>
+
+
+			
+				<tr><!--판매가-->
+				<td><img src="/img/book/i-price.gif" border=0></td>
+				<td><s>40,000원</s> ⇒ <font class="price"><b>32,000원</b></font> (<font class="a1">20%</font>↓)</td>
+				</tr>
+				
+				<tr><!--마일리지-->
+				<td><img src="/img/book/i-mile.gif" border=0></td>
+				<td>
+<font class="a1"><b>
+960원</b></font>
+(<font class="a1">3%</font>) 
+
+				</td></tr>
+			
+				<tr><!--isbn-->
+				<td><img src="/img/book/i-isbn.gif" border=0></td>
+				<td><font color=black><a href="javascript:copyTxt('isbn');" onfocus="this.blur()" style="color:#000000" onmouseover="(window.status='클릭하시면 ISBN이 복사됩니다');return true;" onmouseout="(window.status='');">89-450-7074-5<input type="hidden" id="copyisbn" value="89-450-7074-5"></a></font></td>
+				</tr>
+			
+			
+
+				<tr><!--기타-->
+				<td><img src="/img/book/i-etc.gif" border=0></td>
+				<td><font color=black>
+				번역서 / 2003-09-15 / 1,400 쪽
+				</font>
+				</td>
+				</tr>
+
+
+			
+				<tr><!--수준-->
+				<td><img src="/img/book/i-lever.gif" border=0></td>
+				<td><font color=black>초중급</font></td>
+				</tr>
+			
+
+
+				</table>
+
+			</td>
+ 
+<!--3칸-->
+			<td valign=top align=left>
+				<table border=0 cellpadding=3 cellspacing=0 width="100%">
+
+
+
+
+				<tr><td><a href=/common/basket/cart.asp?sku=200309190004><img src=/img/book/i-cart.gif border=0 align=absmiddle vspace=1 hspace=3></a>
+				</td></tr>
+		
+				<tr><td>
+					<table border=0 cellpadding=0 cellspacing=0 width=100%><tr><td valign=top><img src=/img/book/tip1.gif style='margin:3 3 0 4'>예상출고일: <font color=#048BB8>1일</font>&nbsp;<font class=g9 face=돋움>(근무일기준)</font><a href='javascript:popupDeliInfo();' onmouseover="(window.status='출고 및 배송안내');return true;" onmouseout="(window.status='');"><img src='/img/book/deli_info.gif' border=0 align='absmiddle' style='margin:0 0 0 5'></a></td></tr></table>
+					<table border=0 cellpadding=0 cellspacing=4 style="margin: 15 0 0 0"><tr><td valign='top'><a href="/common/member/login.asp" onmouseover="(window.status='로그인 하세요.');return true;" onmouseout="(window.status='');"><img src='/img/book/b_list.gif' border=0></a></td><td valign='top'><a href="/common/member/login.asp" onmouseover="(window.status='로그인 하세요.');return true;" onmouseout="(window.status='');"><img src='/img/book/b_wish.gif' border='0'></a></td></tr><tr><td><a href='/blog/my.asp?sku=200309190004'><img src='/img/book/b_review.gif' border=0 onmouseover="(window.status='서평쓰기');return true;" onmouseout="(window.status='');"></a></td><td><font face=돋움 class=g9>*서평수 (<a href='#review'><font face='돋움' class='g9'><u>1개</u></font></a>)</font></td></tr></table>
+				</td></tr>
+				</table>
+
+			</td>
+			</tr>
+			</table>
+
+			
+
+
+
+			<table cellpadding=0 cellspacing=0 border=0 width=100% bgcolor=white>
+			<tr><td height=15></td></tr></table>
+
+
+
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff">
+			<tr><td bgcolor="#e6e6e6"></td></tr>
+			<tr><td height=2 bgcolor="#ffffff"></td></tr>
+			<tr><td bgcolor="#c5c5c5"></td></tr>
+			<tr><td height=10></td></tr>
+			</table>
+
+
+
+<!-- 예약 정보 start-->
+			
+<!-- 예약 정보 end -->
+
+
+
+<!-- 개정판 정보 start-->
+			
+<!--개정판 정보 end-->
+
+
+
+<!-- 원서 및 번역서 정보 start-->	
+			
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff">
+			<tr>
+			<td width=40 align=right><img src="/img/book/dot_icon.gif"></td>
+			<td><b>위 도서의 원서</b></td></tr>
+			<tr><td></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200302080004">C++ How to Program (4th Edition)INTERNATIONAL EDITION</a>
+			
+				I <a href="/common/publisher/default.asp?publisher=17" class="menu2"><font color="#aaaaaa">Prentice Hall</a>
+			
+				I <a href="/common/author/default.asp?author_id=9969" class="menu2"><font color="#aaaaaa">Harvey M. Deitel</a> 
+			</td></tr>
+			</table>
+			<table cellpadding=0 cellspacing=0 border=0 width=100% bgcolor=#ffffff><tr><td height=15></td></tr></table>
+<!-- 원서 및 번역서 정보 end -->	
+
+
+
+<!-- 정상도서 및 아울렛도서 정보 start-->	
+			
+<!-- 정상도서 및 아울렛도서 정보 end-->	
+
+
+
+<!-- edtion check start-->
+			
+<!-- edtion check end-->
+
+
+
+<!-- eBook check start-->
+			
+<!-- eBook check end-->
+
+
+
+<!--주제별 분류 start-->
+			
+    		<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="white">
+			<tr><td width=40 align=right><img src="/img/book/dot_icon.gif"></td><td><b>주제별 분류</b></td></tr>
+			
+			<tr>
+				<td></td>
+				<td>
+					<a href="/book/category/step_01.asp?fst_code=06"><font color="#525252">프로그래밍</a> 
+					 > <a href="/book/category/step_02.asp?snd_code=038"><font color="#525252">프로그램 언어</a>
+					 > <a href="/book/category/step_03.asp?trd_code=0065"><font color="#525252">C++</a>
+					
+				</td>
+			</tr>
+			 </table><table cellpadding=0 cellspacing=0 border=0 width=100% bgcolor=#ffffff><tr><td height=15></td></tr></table>
+<!--주제별 분류 end-->
+
+
+
+
+
+<!--도서지수 start-->			
+		
+    		<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="white">
+			<tr>
+			<td width=40 align=right><img src="/img/book/dot_icon.gif"></td>
+			<td><b>도서 지수</b> <font class=g9 face=돋움>(100 Point 만점)</font></td></tr>
+			</table>
+
+
+   			<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="white">		
+			<tr>
+			<td width="100%">
+				<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+				<td width=40></td>
+				<!-- category별 도서지수 시작 -->
+				<td valign="top">
+					<table border="0" cellspacing="0" cellpadding="0">
+					
+					
+					<!--전체평점----------------------->
+					<tr> 
+					<td>C++ 종합지수</td>
+					<td width="125" align="right"> 
+						<table width="111" border="0" background="/img/book/bar_bg.gif" cellspacing="0" cellpadding="0">
+						<tr> 
+						<td width="111"><img src="/img/book/total_bar.gif" width="15%" height="8"></td>
+						</tr>
+						</table>
+					</td>
+					<td width="50" class="verdana" align="right">15 p</td>
+					<td width="50" class="verdana" align="right">25 위 <!--(판매지수+조회수+찜지수+회원평가)--></font></td>
+					</tr>	
+					
+					<!--월간평점----------------------->
+					<tr> 
+					<td>C++ 월간지수</td>
+					<td width="125" align="right"> 
+						<table width="111" border="0" background="/img/book/bar_bg.gif" cellspacing="0" cellpadding="0">
+						<tr> 
+						<td width="111"><img src="/img/book/month_bar.gif" width="57%" height="8"></td>
+						</tr>
+						</table>
+					</td>
+					<td width="50" class="verdana" align="right">57 p</td>
+					<td width="50" class="verdana" align="right">2 위</td>
+					</tr>
+					
+					<!--주간평점----------------------->
+					<tr> 
+					<td>C++ 주간지수</td>
+					<td width="125" align="right"> 
+						<table width="111" border="0" background="/img/book/bar_bg.gif" cellspacing="0" cellpadding="0">
+						<tr> 
+						<td width="111"><img src="/img/book/week_bar.gif" width="100%" height="8"></td>
+						</tr>
+						</table>
+					</td>
+					<td width="50" class="verdana" align="right">100 p</td>
+					<td width="50" class="verdana" align="right">1 위</td>
+					</tr>
+										
+
+					<!--나의 평가----------------------->
+					<!--나의평가.asp-->	
+					</table>
+				</td>
+				</tr>
+				</table>
+			
+
+<table cellpadding=0 cellspacing=0 border=0 width=100% bgcolor=#ffffff><tr><td height=15></td></tr></table></td></tr></table><table border="0" cellspacing="0" cellpadding="0" width=100% bgcolor="#ffffff">
+<tr>
+	<td width=40>&nbsp;&nbsp;</td>
+	<td>
+		<!--카테고리별 지수 시작----------------------------------------->
+		<table border="0" cellspacing="0" cellpadding="0" width=100%>
+		<tr valign=top>
+
+				
+				<td width="50%">
+				<FIELDSET STYLE='BORDER-BOTTOM: #B2AB97 1px solid; BORDER-LEFT: #B2AB97 1px solid; BORDER-RIGHT: #B2AB97 1px solid; BORDER-TOP: #B2AB97 1px solid; PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; PADDING-TOP: 1px;'>
+				<LEGEND STYLE='text-align:left; color:#D66F00; BORDER-BOTTOM: #B2AB97 1px solid; BORDER-LEFT: #B2AB97 1px solid; BORDER-RIGHT: #B2AB97 1px solid; BORDER-TOP: #B2AB97 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 0px; ' align="top">
+				▤ <b>프로그램 언어</b> 월간지수 순위
+				</LEGEND>
+						
+						&nbsp;&nbsp;<font class=g8 face=돋움>1위. <a href="./bookinfo.asp?sku=200303030013"><font class=g8 face=돋움>Taeyo`s ASP.NET V1.0 with C#</a><BR>
+						
+						&nbsp;&nbsp;<font class=g8 face=돋움>2위. <a href="./bookinfo.asp?sku=200407050005"><font class=g8 face=돋움>Component Development With Visual C++ & ATL</a><BR>
+						
+						&nbsp;&nbsp;<font class=g8 face=돋움>3위. <a href="./bookinfo.asp?sku=200405180002"><font class=g8 face=돋움>GoF 디자인 패턴! 이렇게 활용한다: C++로 배우는 패턴의 이해와 활용</a><BR>
+						
+				</FIELDSET>
+				<br></td>
+	<td>&nbsp;&nbsp;</td>
+				<td width="50%">
+				<FIELDSET STYLE='BORDER-BOTTOM: #B2AB97 1px solid; BORDER-LEFT: #B2AB97 1px solid; BORDER-RIGHT: #B2AB97 1px solid; BORDER-TOP: #B2AB97 1px solid; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px;'>
+				<LEGEND STYLE='text-align:left; color:#D66F00; BORDER-BOTTOM: #B2AB97 1px solid; BORDER-LEFT: #B2AB97 1px solid; BORDER-RIGHT: #B2AB97 1px solid; BORDER-TOP: #B2AB97 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 0px; ' align="top">
+				▤ <b>C++</b> 월간지수 순위
+				</LEGEND>
+						
+						&nbsp;&nbsp;<font class=g8 face=돋움>1위. <a href="./bookinfo.asp?sku=200405180002"><font class=g8 face=돋움>GoF 디자인 패턴! 이렇게 활용한다: C++로 배우는 패턴의 이해와 활용</a><BR>
+						
+						&nbsp;&nbsp;<font class=g8 face=돋움>2위. <a href="./bookinfo.asp?sku=200201120001"><font class=g8 face=돋움>이펙티브 STL</a><BR>
+						
+						&nbsp;&nbsp;<font class=g8 face=돋움>3위. <a href="./bookinfo.asp?sku=200302110008"><font class=g8 face=돋움>C++ Standard Library : 튜토리얼·레퍼런스</a><BR>
+						
+				</FIELDSET>
+				<br></td>
+</tr><tr valign=top>
+		</tr>
+		</table>
+		<!--카테고리별 지수 끝--------------------------------------->
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!--도서지수 end-->
+
+
+		</td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	</form>
+	</table>
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	<tr><td height=15></td></tr></tr>
+	</table>
+<!--hard coding----------------------------------------------------------------------------------------------------------->
+
+
+	<!-----table cellpadding="0" cellspacing="0" border="0" align="center">
+	<tr>
+	<td width="15" height="1"><img src="/img/space.gif" width="15" height="1"></TD>
+	<td colspan="3" width="100%">
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" background=/img/book/mo_line.gif>
+		<tr><td width=50%><img src="/img/book/t_mo.gif" border="0"></td><td width=50% align=right><img src="/img/book/t_mo_right.gif" border="0"></td></tr>
+		</table>
+	</td>
+	</tr>
+
+	<tr>
+	<td width="15" height="1"><img src="/img/space.gif" width="15" height="1"></td>
+	<td valign="top" width=1 height=100%><img src="/img/book/dot_line.gif" width=1 height=100% border="0"></td>
+	<td width="100%"----->
+		
+	<!-----/td>
+	<td width=1 height=100%><img src="/img/book/dot_line.gif" width=1 height=100% border="0"></td>
+	</tr></form>
+
+	<tr>
+	<td width="15" height="1"><img src="/img/space.gif" width="15" height="1"></td>
+	<td colspan="3" width="100%">
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" background=/img/book/b_moline.gif><tr>
+		<td width=50%><img src="/img/book/b_mo.gif" border="0"></td><td width=50% align=right><img src="/img/book/b_mo_right.gif" border="0"></td></tr></table>
+	</td>
+	</tr>
+	</table>
+
+	<table width="600" height="20" border="0" cellspacing="0" cellpadding="0"><tr><td>
+	<img src="/img/space.gif" width="600" height="1" border="0"></td></tr>
+	</table----->
+<!--text info button start-->
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	<tr>
+	<td width=35></td>
+	<td>
+
+<script>
+//	tabImgArr = new Array('intro', 'review', 'table', 'writer', 'bonus', 'series', 'project');
+//	onTabImg = new Array('b_intro_on', 'b_review_on', 'b_table_on', 'b_writer_on', 'b_bonus_on', 'b_series_on', 'b_project_on');
+//	offTabImg = new Array('b_intro_off', 'b_review_off', 'b_table_off', 'b_writer_off', 'b_bonus_off', 'b_series_off', 'b_project_off');
+</script>
+
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+		<tr>
+	
+		<td width="67"><img name="tabImg" src="/img/book/b_intro_on.gif"  alt="도서소개" onmouseover="(window.status='도서소개');return true;" onmouseout="(window.status='');" border="0" style="cursor:hand" onclick="content_view('2', 'intro')"></td>
+	
+		<td width="67"><img name="tabImg" src="/img/book/b_review_off.gif" alt="독자서평" onmouseover="(window.status='독자서평');return true;" onmouseout="(window.status='');" border="0" border="0" style="cursor:hand" onclick="content_view('3', 'review')"></td>
+	
+		<td width="67"><img name="tabImg" src="/img/book/b_table_off.gif" alt="목차보기" onmouseover="(window.status='목차보기');return true;" onmouseout="(window.status='');" border="0" style="cursor:hand" onclick="content_view('4', 'table')"></td>
+	
+		<td width="67"><img name="tabImg" src="/img/book/b_writer_off.gif" alt="저자소개" onmouseover="(window.status='저자소개');return true;" onmouseout="(window.status='');" border="0" style="cursor:hand" onclick="content_view('5', 'writer')"></td>
+	
+		<!--<td width="67"><a href="#e"><img src="/img/book/b_md.gif" width="67" height="20" alt="미디어서평" border="0"></a></td>-->
+
+
+
+	  
+		<td width="67"><img name="tabImg" src="/img/book/b_bonus_off.gif" alt="부록" onmouseover="(window.status='부록');return true;" onmouseout="(window.status='');" border="0" style="cursor:hand" onclick="content_view('6', 'bonus')"></td>
+	
+		<td width="67"><img name="tabImg" src="/img/book/b_series_off.gif" alt="시리즈" onmouseover="(window.status='시리즈');return true;" onmouseout="(window.status='');" border="0" style="cursor:hand" onclick="content_view('7', 'series')"></td>
+	
+		<td width="67"><img name="tabImg" src="/img/book/b_project_off.gif" alt="기획도서" onmouseover="(window.status='기획도서');return true;" onmouseout="(window.status='');" border="0" style="cursor:hand" onclick="content_view('8', 'project')"></td>
+	
+		<td>&nbsp;</td>
+		
+
+
+		</tr>
+		</table>	
+
+	</td>
+	</tr>
+	</table>
+<!--text info button end-->		
+<script>
+tabImgArr = new Array('intro', 'review', 'table', 'writer', 'bonus', 'series', 'project');
+</script>		
+
+
+
+<!--outer table start-->
+	<table cellpadding="1" cellspacing="0" border="0" width=100%>
+	<tr>
+	<td bgcolor="#bababa">
+		<table cellpadding="4" cellspacing="0" border="0" width=100%>
+		<tr>
+		<td bgcolor="white">
+
+
+
+<!--inner table start-->
+	<!-- #1 큰도서 이미지 -->
+	
+		<div id="view">
+		<!--big image 문제로 인해 2003-12-23 삭제함. 다른 방법으로 big image표현변경함 -->
+		<!--table cellpadding="5" cellspacing="2" border="0" width="89%" align="center">
+		<tr><td align="center"><img src="/b_pic/" border="1" vspace=3></td></tr>
+		</table>
+
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table> 
+
+		<br-->
+		</div>
+	
+
+		<br>
+
+	<!-- #2 책소개 DIV-->
+	
+		<div id="view">
+		
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+		<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+		<td><font color=#0C4D53><b> 도서특징</td>
+		</tr>
+		</table>
+		<table cellpadding="5" cellspacing="2" border="0" width="89%" align="center">
+		<tr><td style="text-align: justify"><font color=008797><b>C++ 프로그래밍의 모든 것을 담은 바이블</b></font><br><br><font color=ff6600><b>살아 숨쉬는 디텔 라이브 코드(LIVE-CODETM) 실무 예제로 풀어낸 C++ 프로그래밍</b></font><br><br>세계에서 가장 널리 쓰이는 C++ 교재로 인정받아온 『C++ HOW TO PROGRAM』의 4판인 이 책은 C++가 지닌 비상한 기능을 설명하고, OMG(Object Management Group)의 UML(Unified Modeling Language)을 이용한 객체 지향 설계(OOD)와 구체적인 구현 사례를 제시하며, CGI를 이용한 멀티티어(n-tier) 웹 애플리케이션 개발 등, C++를 이용한 객체 지향 프로그래밍의 기초에서 일반 프로그래밍의 완성까지를 한 권에 담아내고 있다.<br><br><br><b>이 책의 특징</b><br><br><li>LIVE-CODE 예제 수백 개를 정확한 결과를 보여주는 캡처 화면과 함께 제공 <br><li>추가 학습 의욕을 돋궈주는 인터넷 및 웹 리소스를 일목요연하게 정리<br><li>수백 개에 이르는 팁, 조언, 습관, 주의 등을 한 눈에 띄는 아이콘으로 정리<br><br><table cellpadding="0" cellspacing="0" border="0" align="center" width="100%"> <td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr></table> <br><b>이 책이 다루고 있는 내용</b><br><br><li>ANSI/ISO 표준 C++<br><li>제어 구조<br><li>함수/배열<br><li>포인터/문자열<br><li>벡터/스트링 객체<br><li>클래스/데이터 추상화<br><li>연산자 오버로딩<br><li>상속/다형성<br><li>가상 함수<br><li>런타임 타입 정보<br><li>예외 처리<br><li>파일/자료 구조<br><li>비트/문자<br><li>네임스페이스<br><li>인터넷/웹 자원<br><br><li>UML OOD 사례연구<br><li>유스케이스 다이어그램<br><li>클래스 다이어그램<br><li>객체 다이어그램<br><li>연관 관계<br><li>복합 관계<br><li>상태차트 다이어그램<br><li>액티비티 다이어그램<br><li>시퀀스 다이어그램<br><li>협력 다이어그램<br><br><br>이 책에 담겨 있는 각종 교육용 자료는 본문 예제 코드(부록CD에도 담겨 있다)는 물론이고 기타 교육기관이나 일반 학생 및 전문가 등을 위한 정보와 더불어 웹 사이트(www.deitel.com, www.prenhall.com/deitel, www.InformIT.com/deitel)에서도 찾아볼 수 있다.</td></tr>
+		</table>
+
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+
+		<br>
+
+	<!-- #5 저자소개 -->
+	
+
+		<!--div id="view"-->
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+		<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+		<td><font color=#0C4D53><b> 저자소개</td>
+		</tr>
+		</table>
+		<table cellpadding="5" cellspacing="2" border="0" width="89%" align="center">
+		<tr><td style="text-align: justify"><b>하비 디텔</b>(Harvey M. Deitel) 박사와 <b>폴 디텔</b>(Paul J. Deitel)<br>디텔 앤 어소시에이츠(Deitel & Associates, Inc.)의 설립자이다. 디텔 앤 어소시에이츠는 C++, C, 비주얼 C++닷넷, 자바, C#, 비주얼베이식 닷넷, XML, 파이썬, 펄, 인터넷, 웹, 닷넷, 객체기술 등을 전문으로 하는 기업 교육 및 컨텐츠 개발 전문 회사로서 세계적으로 인정받고 있다. 하비 디텔과 폴 디텔은 『자바 하우 투 프로그램, 4판(Java How to Program, 4th Ed.)』, 『인터넷과 웹 하우 투 프로그램, 2판(Internet & World Wide Web How to Program, 2nd Ed.)』 등 세계 각국에서 베스트셀러로 손꼽히는 프로그래밍 언어 관련 교재들을 집필한 저명한 저자들이다.</td></tr>
+		</table>
+
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+
+		<br>
+		<!--/div-->
+	
+
+	<!-- #6 부록 -->
+	
+		<!--div id="view"-->
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+		<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+		<td><font color=#0C4D53><b> 부록</td>
+		</tr>
+		</table>
+
+		<table cellpadding="2" cellspacing="5" border="0" width="89%" align="center">
+		
+		<!-- #6-1씨디 -->
+		<tr><td><img src="/img/center/i_cd.gif" alt="" border="0"></td></tr>
+		<tr><td>
+			
+				<br>
+				- 내용 : Microsoft Visual C++ 6.0 (시험판)
+		</td></tr>
+		
+		</table>
+
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+
+		<br>
+		<!--/div-->
+	
+
+
+	<!-- #2-1 독자서평 DIV-->
+	
+		<!--div id="view"-->
+		<a name="#review">
+<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+<tr>
+<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+<td><font color=#0C4D53><b>독자서평</b></font></td><!--a href="/common/bbs_review/review_write.asp?sku="-->
+<td align=right><a href='/blog/my.asp?sku=200309190004'><img src="/img/book/b_review.gif" border="0"></a></td>
+</tr>
+</table>
+
+<table cellpadding="2" cellspacing="2" border="0" width="89%" align="center">
+ 
+
+<tr>
+<td colspan="2">
+	<a name="#0"><img src="/img/book/folder1.gif" align="absmiddle" border="0" id="bar_Sub0"> 
+	<A HREF="#0" onclick="menuClick_Sub('submenu_Sub0','bar_Sub0','0');"><b>이책 c++ 제대로 알기입니다~완전</b></A>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 손월연님, 2003-11-01 작성 
+<img src=/img/book/star.gif border=0 align=absmiddle><img src=/img/book/star.gif border=0 align=absmiddle><img src=/img/book/star.gif border=0 align=absmiddle><img src=/img/book/star.gif border=0 align=absmiddle><img src=/img/book/star.gif border=0 align=absmiddle>
+&nbsp;&nbsp; <img src="/img/book/folder.gif"  align="absmiddle" border="0" id="bar2_Sub0">
+<!--A HREF="#$2" onClick="menuClick2_Sub('submenu2_Sub','bar2_Sub','2');"-->
+<!--A HREF="/common/bbs_review/bbs_read_writer.asp?seqid="-->
+<A HREF="javascript:anchorNaviF('sarang9970','5');"><font class=g8 face=돋움>손월연님의 모든서평</font></A> I <a href="javascript:anchorNaviF('sarang9970','1');"><font class=g8 face=돋움>블로그</font></a>
+</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">
+	<span id="submenu_Sub0" style="font-face:Arial, Helvetica; color:#000000; margin-left:5; display:none;">
+	<table cellpadding="10" cellspacing="0" border="0" width="100%">
+	<tr>
+	<td>
+		<span id="submenuContent" style="margin-left:5;">
+		c++에서의 하나하나 유심히 나와있으며 많은 조언들 때문에 책읽는데 지루하지는 않습니다<br><br>적극 추천합니다<br><br>
+		</span>
+	</td>
+	</tr>
+	</table>
+
+	<table cellpadding="0" cellspacing="0" border="0" width="80%">
+	<tr><td>&nbsp;</td></tr>
+	</table>
+	</span>
+
+	
+
+</td>
+</tr>
+
+</table>
+
+	<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+		
+<br>
+	
+		<!--/div-->
+	
+
+
+	<!-- #2-2 시리즈 DIV-->
+	
+		<!--div id="view"-->
+		<form name ="frmBind" action="/common/basket/cart.asp" method=post>
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+			<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+			<td><font color=#0C4D53><b>시리즈도서</b></font></td>
+		</tr>
+		</table>
+		
+	
+		<table cellpadding="2" cellspacing="0" border="0" width="89%" align="center">
+		<tr><td style="padding: 15 0 0 0;"><img src="/img/main/arrow_red.gif"> <a href="/book/series/series_list.asp?sr_code=77"><b>피어슨에듀케이션 - How to Program</b></font></a></td></tr>
+		</table>
+
+
+
+		<table cellpadding="0" cellspacing="2" border="0" width="92%" align="center">
+		<tr>
+		<td>
+			<table cellpadding="0" cellspacing="3" border="0">
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200312300024"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200312300024">JAVA HOW TO PROGRAM(제5판-한글판)</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200309190004"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200309190004">C++ How To Program, 4판</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200301100001"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200301100001">Wireless Internet & Mobile Business How to Program</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200212270015"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200212270015">Python How to Program</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200210310001"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200210310001">Visual Basic .NET How to Program 2/E</a></td>
+			</tr>
+			
+			<tr>
+			<td colspan="2" align="right"><a href="/book/series/series_list.asp?sr_code=77" class="menu4"><img src="/img/main/more_view3.gif" border=0></a></td>
+			</tr>
+			</table>
+			
+		</td>
+		</tr>
+		</table>
+	
+
+		<table cellpadding="0" cellspacing="0" border="0" width="400">
+		<tr><td width=50></td>
+		<td><input type=image src="/img/book/b_check_add.gif" width="198" height="36" alt="" border="0" id=image1 name=image1></td>
+		</tr>
+		</table>
+				
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+		</form>
+		
+		<!--/div-->
+	
+
+
+
+	<!-- 기획도서 -->
+	
+		<!--div id="view"-->
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+			<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+			<td><font color=#0C4D53><b>기획도서</b></font> (이 도서는 아래의 기획리스트에 선정되었습니다)</td>
+		</tr>
+		</table>
+
+		<table cellpadding="2" cellspacing="5" border="0" width="89%" align="center">
+	
+		<tr><td><img src="/img/main/arrow_red.gif"> <a href="/book/project/project_list.asp?pr_code=99"><b>C++ 초중급자를 위한</b></font></a> [총 22종]</td></tr>
+	
+		<tr><td><img src="/img/main/arrow_red.gif"> <a href="/book/project/project_list.asp?pr_code=35"><b>강컴 Choice <font class=b1 color=#D15900></font></b></font></a> [총 143종]</td></tr>
+	
+		</table>
+
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+
+		<br>
+		<!--/div-->
+	
+		</div>
+		
+	
+
+
+
+	<!-- #3 독자서평 DIV-->
+	
+		<div id="view">
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center"> 
+<tr>
+<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+<td><!--a name="#review"--><font color=#0C4D53><b>독자서평</b></font><!--/a--></td><!--a href="/common/bbs_review/review_write.asp?sku="-->
+<td align=right><a href='/blog/my.asp?sku=200309190004'><img src="/img/book/b_review.gif" border="0"></a></td>
+</tr>
+</table>
+
+<table cellpadding="2" cellspacing="2" border="0" width="89%" align="center">
+
+
+<tr>
+<td colspan="2">
+	<a name="#0"><img src="/img/book/folder1.gif" align="absmiddle" border="0" id="bar0">
+	<A HREF="#0" onclick="menuClick('submenu0','bar0','0');"><b>이책 c++ 제대로 알기입니다~완전</b></a>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 손월연님, 2003-11-01 작성 
+<img src=/img/book/star.gif border=0 align=absmiddle><img src=/img/book/star.gif border=0 align=absmiddle><img src=/img/book/star.gif border=0 align=absmiddle><img src=/img/book/star.gif border=0 align=absmiddle><img src=/img/book/star.gif border=0 align=absmiddle>
+&nbsp;&nbsp; <img src="/img/book/folder.gif"  align="absmiddle" border="0" id="bar20">
+<!--A HREF="#$2" onClick="menuClick2('submenu2','bar2','2');"-->
+<!--A HREF="/common/bbs_review/bbs_read_writer.asp?seqid="-->
+<A HREF="javascript:anchorNaviF('sarang9970','5');"><font class=g8 face=돋움>손월연님의 모든서평</font></A> I <a href="javascript:anchorNaviF('sarang9970','1');"><font class=g8 face=돋움>블로그</font></a>
+</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">
+	<span id="submenu0" style="font-face:Arial, Helvetica; color:#000000; margin-left:5; display:none;">
+	<table cellpadding="10" cellspacing="0" border="0" width="100%">
+	<tr>
+	<td>
+		<span id="submenuContent" style="margin-left:5;">
+			c++에서의 하나하나 유심히 나와있으며 많은 조언들 때문에 책읽는데 지루하지는 않습니다<br><br>적극 추천합니다<br><br>
+		</span>
+	</td>
+	</tr>
+	</table>
+
+	<table cellpadding="0" cellspacing="0" border="0" width="80%">
+	<tr><td>&nbsp;</td></tr>
+	</table>
+	</span>
+
+	
+
+</td>
+</tr>
+
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+<tr><td background="/img/line_w_04.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+<tr><td><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+</table>
+		</div>
+	
+
+	<!-- #4 목차 -->
+	
+		<div id="view">
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+		<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+		<td><font color=#0C4D53><b> 도서목차</td>
+		</tr>
+		</table>
+
+		<table cellpadding="5" cellspacing="2" border="0" width="89%" align="center">
+		<tr><td>1장  컴퓨터와 C++ 프로그래밍의 소개<br>2장  제어 구조 <br>3장  함수<br>4장  배열<br>5장 포인터와 문자열<br>6장  클래스와 데이터 추상화	<br>7장  클래스 2부<br>8장  연산자 오버로딩: 문자열과 배열 객체<br>9장  객체 지향 프로그래밍: 상속<br>10장 객체 지향 프로그래밍: 다형성<br>11장 템플릿<br>12장 C++ 스트림 입출력<br>13장 예외 처리<br>14장 파일 처리<br>15장 string 클래스와 문자열 스트림 처리	<br>16장 CGI 웹 프로그래밍<br>17장 자료 구조 <br>18장 비트, 문자, 문자열 및 구조체 <br>19장 전처리기<br>20장 C 레거시 코드 관련 주제들<br>21장 표준 템플릿 라이브러리(STL)<br>22장 다른 주제들 	<br>부록 A 연산자 우선순위 표<br>부록 B ASCII 문자 집합<br>부록 C 수 체계								<br>부록 D C++ 인터넷과 웹 자원	<br>부록 E.  XHTML 소개<br>부록 F XHTML 특수 문자<br>참고문헌<br>찾아보기</td></tr>
+		</table>
+
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+
+		<br>
+		</div>
+	
+
+
+	<!-- #5 저자소개 -->
+	
+		<div id="view">
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+		<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+		<td><font color=#0C4D53><b> 저자소개</td>
+		</tr>
+		</table>
+		<table cellpadding="5" cellspacing="2" border="0" width="89%" align="center">
+		<tr><td style="text-align: justify"><b>하비 디텔</b>(Harvey M. Deitel) 박사와 <b>폴 디텔</b>(Paul J. Deitel)<br>디텔 앤 어소시에이츠(Deitel & Associates, Inc.)의 설립자이다. 디텔 앤 어소시에이츠는 C++, C, 비주얼 C++닷넷, 자바, C#, 비주얼베이식 닷넷, XML, 파이썬, 펄, 인터넷, 웹, 닷넷, 객체기술 등을 전문으로 하는 기업 교육 및 컨텐츠 개발 전문 회사로서 세계적으로 인정받고 있다. 하비 디텔과 폴 디텔은 『자바 하우 투 프로그램, 4판(Java How to Program, 4th Ed.)』, 『인터넷과 웹 하우 투 프로그램, 2판(Internet & World Wide Web How to Program, 2nd Ed.)』 등 세계 각국에서 베스트셀러로 손꼽히는 프로그래밍 언어 관련 교재들을 집필한 저명한 저자들이다.</td></tr>
+		</table>
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+
+		<br>
+		</div>
+	
+
+
+	<!-- #6 부록 -->
+	
+		<div id="view">
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+		<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+		<td><font color=#0C4D53><b> 부록</td>
+		</tr>
+		</table>
+
+		<table cellpadding="2" cellspacing="5" border="0" width="89%" align="center">
+		
+		<!-- #6-1씨디 -->
+		<tr><td><img src="/img/center/i_cd.gif" alt="" border="0"></td></tr>
+		<tr><td>
+			
+				<br>
+				- 내용 : Microsoft Visual C++ 6.0 (시험판)
+		</td></tr>
+		
+		</table>
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+
+		<br>
+		</div>
+	
+
+
+	<!-- #7시리즈 DIV-->
+	
+		<div id="view">
+		<form name ="frmBind" action="/common/basket/cart.asp" method=post>
+	
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+		<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+		<td> <a href="/book/series/series_list.asp?sr_code=77"><font color=#0C4D53><b>피어슨에듀케이션 - How to Program</b></font></a></td>
+		</tr>
+		</table>
+
+		<table cellpadding="0" cellspacing="2" border="0" width="92%" align="center">
+		<tr>
+		<td>
+			<table cellpadding="0" cellspacing="3" border="0">
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200312300024"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200312300024">JAVA HOW TO PROGRAM(제5판-한글판)</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200309190004"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200309190004">C++ How To Program, 4판</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200301100001"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200301100001">Wireless Internet & Mobile Business How to Program</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200212270015"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200212270015">Python How to Program</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200210310001"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200210310001">Visual Basic .NET How to Program 2/E</a></td>
+			</tr>
+			
+			<tr>
+			<td colspan="2" align="right"><a href="/book/series/series_list.asp?sr_code=77" class="menu4"><img src="/img/main/more_view3.gif" border=0></a><br><br></td>
+			</tr>
+			</table>
+			
+		</td>
+		</tr>
+		</table>
+	
+
+		<table cellpadding="0" cellspacing="0" border="0" width="400">
+		<tr><td width=50></td>
+		<td><input type=image src="/img/book/b_check_add.gif" width="198" height="36" alt="" border="0" id=image1 name=image1></td>
+		</tr>
+		</table>
+				
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+		</form>
+		
+		<br>
+		</div>
+	
+
+
+
+
+	<!-- #8 기획도서 -->
+	
+		<div id="view">
+		<form name ="frmBind" action="/common/basket/cart.asp" method=post>
+	
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+		<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+		<td> <a href="/book/project/project_list.asp?pr_code=99"><font color=#0C4D53><b>C++ 초중급자를 위한</b></font></a></td>
+		</tr>
+		</table>
+
+		<table cellpadding="0" cellspacing="2" border="0" width="92%" align="center">
+		<tr>
+		<td>
+			<table cellpadding="0" cellspacing="3" border="0">
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200404080019"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200404080019">생각하며 배우는 C++</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200403300018"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200403300018">열혈강의 C++ 프로그래밍</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200403120001"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200403120001">C++를 이용한 컴퓨터프로그래밍(3/e)</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200311110004"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200311110004">C++ How to Program, 4/E</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200309190004"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200309190004">C++ How To Program, 4판</a></td>
+			</tr>
+			
+			<tr>
+			<td colspan="2" align="right"><a href="/book/project/project_list.asp?pr_code=99" class="menu4"><img src="/img/main/more_view3.gif" border=0></a><br><br></td>
+			</tr>
+			</table>
+			
+		</td>
+		</tr>
+		</table>
+	
+		<table cellpadding="0" cellspacing="0" border="0" width="92%" align="center">
+		<tr>
+		<td class="title6" width=20 valign=top><img src="/img/book/icon1.gif" border="0" vspace="1"></td>
+		<td> <a href="/book/project/project_list.asp?pr_code=35"><font color=#0C4D53><b>강컴 Choice <font class=b1 color=#D15900></font></b></font></a></td>
+		</tr>
+		</table>
+
+		<table cellpadding="0" cellspacing="2" border="0" width="92%" align="center">
+		<tr>
+		<td>
+			<table cellpadding="0" cellspacing="3" border="0">
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200410210003"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200410210003">ShaderX² : DirectX 9 셰이더 프로그래밍 팁 & 트릭</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200409230002"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200409230002">소프트웨어 공학의 사실과 오해</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200409200006"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200409200006">ShaderX² : DirectX 9 셰이더 프로그래밍</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200409040001"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200409040001">소프트웨어 프로젝트에서의 리스크 관리</a></td>
+			</tr>
+			
+			<tr>
+			<td>&nbsp;&nbsp;<input type="checkbox" name="sku" value="200408210001"></td>
+			<td><a href="/common/bookinfo/bookinfo.asp?sku=200408210001">UNIX Systems Programming</a></td>
+			</tr>
+			
+			<tr>
+			<td colspan="2" align="right"><a href="/book/project/project_list.asp?pr_code=35" class="menu4"><img src="/img/main/more_view3.gif" border=0></a><br><br></td>
+			</tr>
+			</table>
+			
+		</td>
+		</tr>
+		</table>
+	
+
+		<table cellpadding="0" cellspacing="0" border="0" width="400">
+		<tr><td width=50></td>
+		<td><input type=image src="/img/book/b_check_add.gif" width="198" height="36" alt="" border="0" id=image1 name=image1></td>
+		</tr>
+		</table>
+				
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="92%">
+		<tr><td align="right"><a href="#"><img src="/img/member/top.gif" border="0"></a></td></tr>
+		<tr><td background="/img/line_w_02.gif"><img src="/img/space.gif" width="1" height="1" border="0"></td></tr>
+		</table>
+		</form>
+		
+		<br>
+		</div>
+	
+<!--inner table end-->
+
+
+
+		</td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	</table>
+<!--outer table end-->
+
+</TD>
+
+
+<TD><img src="/img/space.gif" width="6"></TD>
+
+
+<TD VALIGN="TOP">
+
+<table cellpadding="1" cellspacing="0" border="0" width=250>
+<tr>
+<td bgcolor="#bababa">
+
+<table cellpadding="4" cellspacing="0" border="0" width=100%>
+<tr>
+<td bgcolor="#f3f3f3">
+
+
+
+<TABLE width="100%" border="0" cellspacing="0" cellpadding="0" align="right">
+<TR valign=top>
+<TD> 
+
+
+
+	<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor=white>
+	<tr>
+	<td valign=top> 
+
+
+
+
+
+
+
+		<!--예약도서	 {1-1}-->
+
+
+
+		<!--BOOKLIST	 {2}-->
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table2" width="100%">
+		<tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr>
+		<tr>
+		<td bgcolor="#f3f3f3" width=18 align=right valign=top><img src=/img/right/arrow.gif border=0 style="margin:3 0 0 0"></td>
+		<td bgcolor="#f3f3f3" align=left>
+		<font color=59534B><B>이 책을 구매한 분들의 북리스트</B></td></tr>
+        <tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr></table>
+
+
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table3" width="90%" align=center>
+		<tr><td height=10 colspan=2></td></tr>
+
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top>
+			<div style="text-align: justify"><a href="javascript:anchorNaviN('view','kicom95','11387','3');" onmouseover="(window.status='[kicom95] C++' );return true;" onmouseout="(window.status='');"><font color=#4c4c4c>C++</font></a></div>
+		</td>
+		</tr>
+
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top>
+			<div style="text-align: justify"><a href="javascript:anchorNaviN('view','madsati','2677','3');" onmouseover="(window.status='[madsati] 교재' );return true;" onmouseout="(window.status='');"><font color=#4c4c4c>교재</font></a></div>
+		</td>
+		</tr>
+
+		<tr><td height=10 colspan=2></td></tr>
+		</table>
+
+
+
+		<!--MY MEMO	 {3}-->
+
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table2" width="100%">
+		<tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr>
+		<tr>
+		<td bgcolor="#f3f3f3" width=18 align=right valign=top><img src=/img/right/arrow.gif border=0 style="margin:3 0 0 0"></td>
+		<td bgcolor="#f3f3f3" align=left>
+		<font color=59534B><B>이 책에 대한 메모쓰기</B> <font face=돋움 class=g9>(<a href="/common/member/login.asp" onmouseover="(window.status='로그인 하세요.');return true;" onmouseout="(window.status='');"><font face=돋움 class=g9><u>로그인</u></font></a> 먼저)</font></td></tr>
+		<tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr></table>
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		<tr><td height=10></td></tr>
+		<tr><td><img src="/img/book/i-mymemo.gif" hspace=3></td></tr>
+		<tr>
+		<td align="center" width="100%">
+		<textarea name="memoContent" id="memoContent1" class="box" rows="3" style="width:95%;padding:3 3 3 3;border:1 solid C4CAD1" onkeyup="location.href='/common/member/login.asp'" onchange="location.href='/common/member/login.asp'" onfocus="location.href='/common/member/login.asp'">이 책 읽은 느낌을 메모로 남기세요.</textarea>
+		</td></tr>
+		<tr><td align=right><!--input type="image" src="/img/book/i-ok.gif" hspace=3--></td></tr>
+		<tr><td height=10></td></tr>
+		</table>
+
+
+		<!--ANONYMOUS MEMO	 {4}-->
+
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table2" width="100%">
+		<tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr>
+		<tr>
+		<td bgcolor="#f3f3f3" width=18 align=right valign=top><img src=/img/right/arrow.gif border=0 style="margin:3 0 0 0"></td>
+		<td bgcolor="#f3f3f3" align=left>
+		<font color=59534B><B>이 책을 구매한 분들의 메모</B></td></tr>
+        <tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr></table>
+		
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table3" width="90%" align=center>
+		<tr><td height=10 colspan=2></td></tr>
+
+
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><!--style="text-align: justify"-->
+			<div style='word-break:break-all;'><a href="javascript:anchorNaviN('view','kicom95','11387','3');" onmouseover="(window.status='[kicom95] C++' );return true;" onmouseout="(window.status='');">사고 싶다<br></font></a> (<a href="javascript:anchorNaviF('kicom95','1');" onmouseover="(window.status='[kicom95]님의 블로그 ' );return true;" onmouseout="(window.status='');"><font color="#5c5c5c">kicom95</font></a>)</div>
+		</td>
+		</tr>
+
+
+
+
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><!--style="text-align: justify"-->
+			<div style='word-break:break-all;'><a href="javascript:anchorNaviN('view','madsati','2677','3');" onmouseover="(window.status='[madsati] 교재' );return true;" onmouseout="(window.status='');">객체 교재</font></a> (<a href="javascript:anchorNaviF('madsati','1');" onmouseover="(window.status='[madsati]님의 블로그 ' );return true;" onmouseout="(window.status='');"><font color="#5c5c5c">madsati</font></a>)</div>
+		</td>
+		</tr>
+
+
+
+		<tr><td height=10 colspan=2></td></tr>
+		</table>
+
+
+
+
+
+		
+		<!--BESTSELLER	 {5}-->
+		<!--관련도서 베스트5 -->
+	
+
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table2" width="100%">
+		<tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr>
+		<tr>
+		<td bgcolor="#f3f3f3" width=18 align=right valign=top><img src=/img/right/arrow.gif border=0 style="margin:3 0 0 0"></td>
+		<td bgcolor="#f3f3f3" align=left>
+		<font color=59534B><B>프로그램 언어</B> 분야 종합베스트</font></td></tr>
+        <tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr></table>
+
+
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table3" width="90%" align=center>
+		<tr><td height=10 colspan=2></td></tr>
+
+		
+		<tr>
+		<td valign=top><font color=D54B00 size=2 face=verdana><b>1.</b></font><!--img src="/img/book/no.gif" style="margin:2 2 0 0"--></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=199803010003"><!--img src="" border="1" align=left--><font color=#4c4c4c>EFFECTIVE C++ 2편</font></a></td>
+		</tr>
+		
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+		
+		<tr>
+		<td valign=top><font color=D54B00 size=2 face=verdana><b>2.</b></font><!--img src="/img/book/no.gif" style="margin:2 2 0 0"--></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=199909030016"><!--img src="" border="1" align=left--><font color=#4c4c4c>C++ 기초플러스 (제3판)</font></a></td>
+		</tr>
+		
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+		
+		<tr>
+		<td valign=top><font color=D54B00 size=2 face=verdana><b>3.</b></font><!--img src="/img/book/no.gif" style="margin:2 2 0 0"--></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200211150006"><!--img src="" border="1" align=left--><font color=#4c4c4c>CODE COMPLETE : 프로그래밍 완전정복</font></a></td>
+		</tr>
+		
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+		
+		<tr>
+		<td valign=top><font color=D54B00 size=2 face=verdana><b>4.</b></font><!--img src="/img/book/no.gif" style="margin:2 2 0 0"--></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200301290001"><!--img src="" border="1" align=left--><font color=#4c4c4c>More Effective C++</font></a></td>
+		</tr>
+		
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+		
+		<tr>
+		<td valign=top><font color=D54B00 size=2 face=verdana><b>5.</b></font><!--img src="/img/book/no.gif" style="margin:2 2 0 0"--></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=199901260018"><!--img src="" border="1" align=left--><font color=#4c4c4c>Microsoft Visual C++6.0 ATL COM Programming</font></a></td>
+		</tr>
+		
+		<tr><td height=10 colspan=2></td></tr>
+		
+		</table>
+		
+
+
+
+		<!--NEWRELEASE	 {6}-->
+
+
+ 		<table cellpadding="2" cellspacing="0" border="0" ID="Table2" width="100%">
+		<tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr>
+		<tr>
+		<td bgcolor="#f3f3f3" width=18 align=right valign=top><img src=/img/right/arrow.gif border=0 style="margin:3 0 0 0"></td>
+		<td bgcolor="#f3f3f3" align=left>
+		<font color=59534B><B>C++</B> 분야 신간도서</font></td></tr>
+        <tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr></table>
+		
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table3" width="90%" align=center>
+		<tr><td height=10 colspan=2></td></tr>
+		
+		
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200410290001"><font color=#4c4c4c>C++ Coding Standards: Rules, Guidelines, and Best Practices</font></a> <font color="#a4a4a4">(2004-11-30)</font></td>
+		</tr>
+		
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+		
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200409220012"><font color=#4c4c4c>프로젝트와 함께 하는 STL의 아름다움</font></a> <font color="#a4a4a4">(2004-10-04)</font></td>
+		</tr>
+		
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+		
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200409100019"><font color=#4c4c4c>실시간 임베디드 퀀텀 프로그래밍</font></a> <font color="#a4a4a4">(2004-09-11)</font></td>
+		</tr>
+		
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+		
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200408190003"><font color=#4c4c4c>클래스 구조의 이해와 설계 : UML, Java, C++을 활용한 객체지향 모델링 실전</font></a> <font color="#a4a4a4">(2004-08-30)</font></td>
+		</tr>
+		
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+		
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200408190010"><font color=#4c4c4c>C++ STL 실전 프로그래밍</font></a> <font color="#a4a4a4">(2004-08-30)</font></td>
+		</tr>
+		
+		<tr><td height=10 colspan=2></td></tr>
+		
+		</table>
+
+
+
+
+		<!--AUTHOR OTHERBOOK	 {7}-->
+
+
+ 		<table cellpadding="2" cellspacing="0" border="0" ID="Table2" width="100%">
+		<tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr>
+		<tr>
+		<td bgcolor="#f3f3f3" width=18 align=right valign=top><img src=/img/right/arrow.gif border=0 style="margin:3 0 0 0"></td>
+		<td bgcolor="#f3f3f3" align=left>
+		<font color=59534B><B>Harvey M. Deitel</B> 저자의 다른 도서</font></td></tr>
+        <tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr></table>
+
+		<table cellpadding="2" cellspacing="0" border="0" width="90%" align="center">
+		<tr><td height=10 colspan=2></td></tr>
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200312300024" ><font color=#4c4c4c>JAVA HOW TO PROGRAM(제5판-한글판)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200312220079" ><font color=#4c4c4c>Internet & World Wide Web How to Program (3rd Edition)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200309250007" ><font color=#4c4c4c>전문 개발자를 위한 자바 웹 서비스  (한글판)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200401050016" ><font color=#4c4c4c>C How to Program, Fourth Edition(International Edition)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200302240004" ><font color=#4c4c4c>JAVA HOW TO PROGRAM(Fifth Edition)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200210310001" ><font color=#4c4c4c>Visual Basic .NET How to Program 2/E</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200212130011" ><font color=#4c4c4c>Java Web Services For Experienced Programmers</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200212130012" ><font color=#4c4c4c>Visual Basic .NET For Experienced Programmers</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200212130010" ><font color=#4c4c4c>Web Services: A Technical Introduction</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200302080004" ><font color=#4c4c4c>C++ How to Program (4th Edition)INTERNATIONAL EDITION</font></a></td>
+		</tr>
+	
+			<tr><td height=10 colspan=2></td></tr>
+	
+		</table>
+
+
+ 		<table cellpadding="2" cellspacing="0" border="0" ID="Table2" width="100%">
+		<tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr>
+		<tr>
+		<td bgcolor="#f3f3f3" width=18 align=right valign=top><img src=/img/right/arrow.gif border=0 style="margin:3 0 0 0"></td>
+		<td bgcolor="#f3f3f3" align=left>
+		<font color=59534B><B>Paul J. Deitel</B> 저자의 다른 도서</font></td></tr>
+        <tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr></table>
+
+		<table cellpadding="2" cellspacing="0" border="0" width="90%" align="center">
+		<tr><td height=10 colspan=2></td></tr>
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200312300024" ><font color=#4c4c4c>JAVA HOW TO PROGRAM(제5판-한글판)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200312220079" ><font color=#4c4c4c>Internet & World Wide Web How to Program (3rd Edition)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200309250007" ><font color=#4c4c4c>전문 개발자를 위한 자바 웹 서비스  (한글판)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200401050016" ><font color=#4c4c4c>C How to Program, Fourth Edition(International Edition)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200302240004" ><font color=#4c4c4c>JAVA HOW TO PROGRAM(Fifth Edition)</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200212130011" ><font color=#4c4c4c>Java Web Services For Experienced Programmers</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200212130012" ><font color=#4c4c4c>Visual Basic .NET For Experienced Programmers</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200212130010" ><font color=#4c4c4c>Web Services: A Technical Introduction</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200302080004" ><font color=#4c4c4c>C++ How to Program (4th Edition)INTERNATIONAL EDITION</font></a></td>
+		</tr>
+	
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+	
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200212130007" ><font color=#4c4c4c>C# For Experienced Programmers</font></a></td>
+		</tr>
+	
+			<tr><td height=10 colspan=2></td></tr>
+	
+		</table>
+
+
+
+
+		<!--TRANSLATOR OTHERBOOK	 {8}-->
+
+
+
+
+		<!--PUBLISHER OTHERBOOK	 {9}-->
+
+
+ 		<table cellpadding="2" cellspacing="0" border="0" ID="Table2" width="100%">
+		<tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr>
+		<tr>
+		<td bgcolor="#f3f3f3" width=18 align=right valign=top><img src=/img/right/arrow.gif border=0 style="margin:3 0 0 0"></td>
+		<td bgcolor="#f3f3f3" align=left>
+		<font color=59534B><B>피어슨에듀케이션코리아</B>의 프로그래밍 분야 출간도서</font></td></tr>
+        <tr><td height=6 bgcolor="#f3f3f3" colspan=2></td></tr></table>
+		
+
+		<table cellpadding="2" cellspacing="0" border="0" width="90%" align="center">
+		<tr><td height=10 colspan=2></td></tr>
+
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200409300001" ><font color=#4c4c4c>C 기초 플러스 : C Primer Plus 개정 4판 + <font color=ff3300>[증정]다용도 물병</font></font></a> <font color="#a4a4a4">(2004-09-20)</font></td>
+		</tr>
+
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200406230008" ><font color=#4c4c4c>C 포인터 완벽 가이드 : POINTERS ON C</font></a> <font color="#a4a4a4">(2004-06-01)</font></td>
+		</tr>
+
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200405220006" ><font color=#4c4c4c>코어 J2EE 패턴 2판 : Core J2EE  PATTERNS + <font color=ff3300>[증정]다용도 물병</font></font></a> <font color="#a4a4a4">(2004-05-15)</font></td>
+		</tr>
+
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200312300023" ><font color=#4c4c4c>J2EE 플랫폼 웹 서비스</font></a> <font color="#a4a4a4">(2003-12-24)</font></td>
+		</tr>
+
+		<tr><td height=2 colspan=2></td></tr>
+		<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+		<tr><td height=4 colspan=2></td></tr>	
+
+		<tr>
+		<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+		<td valign=top><a href="/common/bookinfo/bookinfo.asp?sku=200312150001" ><font color=#4c4c4c>유닉스 쉘 바이블: 유닉스&#8729;리눅스 쉘 프로그래밍 완성 + <font color=ff3300>[증정]다용도 물병</font></font></a> <font color="#a4a4a4">(2003-12-19)</font></td>
+		</tr>
+
+		<tr><td height=10 colspan=2></td></tr>
+
+		</table>
+
+
+
+
+		<!--Lecture	 {10}
+		<table cellpadding="5" cellspacing="0" border="0" ID="Table2" width="100%">
+			<tr>
+				<td bgcolor="#f3f3f3" align=left height=35>
+					<img src=/img/right/arrow.gif border=0 align=absmiddle> <font color=59534B><B>ASP</B> 관련분야의 온라인 강좌안내</font>
+				</td>
+			</tr>
+		</table>
+
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table3" width="90%" align=center>
+			<tr><td height=10 colspan=2></td></tr>
+			<tr>
+				<td valign=top>
+					<a href="/common/bookinfo/bookinfo.asp?sku=200405250020" ><img src="http://kangcom.com/s_pic/200404300006.gif" align=left border=1 hspace=5><font color=#4c4c4c>ASP 기초다지기 (3개월 강의)
+				</td>
+			</tr>
+			<tr><td height=10 colspan=2></td></tr>
+		</table>
+		-->
+		
+		
+
+		<table cellpadding="5" cellspacing="0" border="0" ID="Table2" width="100%">
+			<tr>
+				<td bgcolor="#f3f3f3" align=left height=50>
+					<img src=/img/right/arrow.gif border=0 align=absmiddle> <font color=006699><b>관련 온라인강의 안내<br>
+					<img src=/img/main/space.gif width=20 height=1 border=0 align=absmiddle><font class=g9 face=돋움 color=008DD3>(온라인 강의전문 테크빌 제공)</b></font>
+				</td>
+			</tr>
+		</table>
+	
+		<table cellpadding="2" cellspacing="0" border="0" ID="Table3" width="90%" align=center>
+			<tr><td height=10 colspan=2></td></tr>
+			
+		
+			<tr>
+				<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+				<td valign=top>
+					<a href="http://www.itville.co.kr/mb/mba/mbaa99.jsp?redirect_url=/mg/mga/mgaf00.jsp&LEC_CD=9&LEC_SEQ_NO=0&CONTENTS_ID=9&CONTENTS_BIG_UNIT_NO=0&CONTENTS_SMALL_UNIT_NO=0&LOCATION=2" target="_blank"><font color=#4c4c4c>JAVA 기초과정</font></a>
+				</td>
+			</tr>
+			
+					<tr><td height=2 colspan=2></td></tr>
+					<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+					<tr><td height=4 colspan=2></td></tr>
+				
+			<tr>
+				<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+				<td valign=top>
+					<a href="http://www.itville.co.kr/mb/mba/mbaa99.jsp?redirect_url=/mg/mga/mgaf00.jsp&LEC_CD=10&LEC_SEQ_NO=0&CONTENTS_ID=10&CONTENTS_BIG_UNIT_NO=0&CONTENTS_SMALL_UNIT_NO=0&LOCATION=2" target="_blank"><font color=#4c4c4c>ASP 초, 중급과정</font></a>
+				</td>
+			</tr>
+			
+					<tr><td height=2 colspan=2></td></tr>
+					<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+					<tr><td height=4 colspan=2></td></tr>
+				
+			<tr>
+				<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+				<td valign=top>
+					<a href="http://www.itville.co.kr/mb/mba/mbaa99.jsp?redirect_url=/mg/mga/mgaf00.jsp&LEC_CD=11&LEC_SEQ_NO=0&CONTENTS_ID=11&CONTENTS_BIG_UNIT_NO=0&CONTENTS_SMALL_UNIT_NO=0&LOCATION=2" target="_blank"><font color=#4c4c4c>C# 기초과정</font></a>
+				</td>
+			</tr>
+			
+					<tr><td height=2 colspan=2></td></tr>
+					<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+					<tr><td height=4 colspan=2></td></tr>
+				
+			<tr>
+				<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+				<td valign=top>
+					<a href="http://www.itville.co.kr/mb/mba/mbaa99.jsp?redirect_url=/mg/mga/mgaf00.jsp&LEC_CD=12&LEC_SEQ_NO=0&CONTENTS_ID=12&CONTENTS_BIG_UNIT_NO=0&CONTENTS_SMALL_UNIT_NO=0&LOCATION=2" target="_blank"><font color=#4c4c4c>Visual Basic.NET 프로그래밍</font></a>
+				</td>
+			</tr>
+			
+					<tr><td height=2 colspan=2></td></tr>
+					<tr><td background="/img/line_w_02.gif" colspan=2></td></tr>
+					<tr><td height=4 colspan=2></td></tr>
+				
+			<tr>
+				<td width=10 align=right valign=top><img src="/img/my/dot_red.gif" border=0 style="margin:6 2 0 0"></td>
+				<td valign=top>
+					<a href="http://www.itville.co.kr/mb/mba/mbaa99.jsp?redirect_url=/mg/mga/mgaf00.jsp&LEC_CD=13&LEC_SEQ_NO=0&CONTENTS_ID=13&CONTENTS_BIG_UNIT_NO=0&CONTENTS_SMALL_UNIT_NO=0&LOCATION=2" target="_blank"><font color=#4c4c4c>Install Shield Pro 6.2 초,중급과정</font></a>
+				</td>
+			</tr>
+						
+			<tr><td height=10 colspan=2></td></tr>
+		</table>
+
+
+	</td>
+	</tr>
+	</table>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</TD>
+
+</TR>
+</TABLE>
+
+
+
+<table><tr height="30"><td></td></tr></table>
+
+<table cellpadding="0" cellspacing="0" border=0 width=100%>
+<tr><td bgcolor=#CCC8C2 width=100% height=1></td></tr></table>
+
+
+
+<table cellpadding="0" cellspacing="0" border=0 width=100% bgcolor=#FBF9F6>
+<tr>
+<td width=15%></td>
+<td width=70% align=center>
+
+<table cellpadding="10" cellspacing="0" border="0"  align=center>
+<tr><td><font color="#aaaaaa">
+<a href="http://kangcom.com/common/basket/cart.asp?tC=14"><font color=#27251C>장바구니</font></a> I 
+<a href="https://kangcom.com/common/myzone/default.asp?tC=14"><font color=#27251C>마이페이지</font></a> I 
+<a href="http://kangcom.com/common/supportcenter/default.asp?tC=14"><font color=#27251C>고객지원</font></a> I 
+<a href="http://kangcom.com/common/about/cooper.asp"><font color=#27251C>제휴안내</font></a> I
+<a href="http://kangcom.com/common/about/orderinfo.asp"><font color=#27251C>대량구매안내</font></a> I
+<a href="javascript:newwin1()"><font color=#27251C>이용약관</font></a> I <a href="javascript:newwin2()"><font color=#27251C>개인정보보호정책</font></a> | <img src="/img/bottom/email.gif"><a href="javascript:newwin3()"><font color=#27251C>이메일주소수집거부</font></a>
+</td></tr>
+</table>
+
+</td>
+
+
+
+<td width=15% align=right><a href="#"><img src="/img/member/top.gif" border=0 hspace=10></a></td>
+</tr></tr></table>
+
+
+<table cellpadding="0" cellspacing="0" border=0 width=100%>
+<tr><td bgcolor=#CCC8C2 width=100% height=1></td></tr></table>
+
+
+<SCRIPT LANGUAGE="javascript">
+<!--//
+ function newwin1(){
+    newwin = window.open("/common/member/rule.asp","newwindow","height=520,width=480,location=0,menubar=0,resizable=0,scrollbars=yes, status=0,titlebar=0,toolbar=0,screeny=0,left=0,top=0")
+}
+ function newwin2(){
+    newwin = window.open("/common/member/indi.htm","newwindow","height=520,width=480,location=0,menubar=0,resizable=0,scrollbars=yes, status=0,titlebar=0,toolbar=0,screeny=0,left=0,top=0")
+}
+ function newwin3(){
+    newwin = window.open("/common/member/email.htm","newwindow","height=280,width=400,location=0,menubar=0,resizable=0,scrollbars=no, status=0,titlebar=0,toolbar=0,screeny=0,left=0,top=0")
+}
+//-->
+</script>
+
+<br>
+
+
+<table cellpadding="0" cellspacing="0" border="0" width=100%>
+<tr><td bgcolor="White" align=right width=35%><img src="/img/bottom/logo.gif" border=0 hspace=10></td>
+<td bgcolor="White">
+<table cellpadding="0" cellspacing="0" border="0" width=580>
+<tr><td bgcolor="White"><font color=#404040>
+사업자 등록번호 : 220-86-40594 | 통신판매업 신고 (마포통신 제 1675호)<br>
+대표이사 : 황인석 | 개인정보 관리 책임자 : 임흥택<br>
+강남컴퓨터서적(주) 서울시 마포구 연남동 488-11 연남 HnL빌 2층 (121-868)<br>
+고객지원실 대표전화: 02-324-3752~3, FAX:  02-324-3750<br>
+<font class=g9 face=돋움>Copyright <font face=arial>ⓒ</font> <b>kangcom.com</b> All rights reserved. Contact <a href="mailto:help@kangcom.com"><font class=g9 face=돋움><b>help@kangcom.com</b></font></a> for more information.</font></td></tr></table>
+</td>
+<td align=center bgcolor="White" width=25%>&nbsp;</td></tr></table>
+
+<br>
+<br>
+
+
+
+</body>
+</html>
+
+
+<script language="javascript">
+<!--
+function initialize()
+{
+	//initFocus();
+	if(document.all["view"]!=null)
+	{
+		
+			for(i=2;i<document.all["view"].length;i++)
+			document.all["view"][i].style.display="none";
+			
+			document.all["view"][0].style.display="none";
+			
+    }
+}
+
+/*
+b_intro_on.gif				//도서소개	1
+b_review_off.gif			//독자서평	2
+b_table_off.gif				//목차보기	3
+b_writer_off.gif			//저자소개	4
+b_bonus_off.gif			//부록			5
+b_series_off.gif			//시리즈		6
+b_project_off.gif			//기획도서	7
+*/
+function content_view(num, tmenu)
+{
+        for(i=0;i<document.all["view"].length;i++)
+        {
+                if(i==parseInt(num-1)){
+                        document.all["view"][i].style.display="";
+						//document.tabImg[i-1].src = "/img/book/b_"+tmenu+"_on.gif";
+                }else{
+                        document.all["view"][i].style.display="none";
+
+				}
+        }
+		for(j=0; j < tabImgArr.length; j++){
+			if(tabImgArr[j] != tmenu){
+			document.tabImg[j].src = '/img/book/b_' + tabImgArr[j]+"_off.gif";	
+			}else{
+			document.tabImg[j].src = '/img/book/b_' + tabImgArr[j]+"_on.gif";	
+			}
+		}
+}
+
+	function gotoSubPages(pos)
+	{
+		if(document.tab)
+		{
+			if(pos == '')
+				pos = '0';
+	
+			if(document.tab.length)
+			{
+				for(i=0; i<onMenuImg.length; i++)
+				{
+					if(pos == i)
+						document.tab[i].src = 'http://image.kyobobook.co.kr/images/apps/category/' + onMenuImg[i];
+					else
+						document.tab[i].src = 'http://image.kyobobook.co.kr/images/apps/category/' + offMenuImg[i];
+				}
+			}
+			else
+				document.tab.src = 'http://image.kyobobook.co.kr/images/apps/category/' + onMenuImg[pos];
+						
+			forms = document.DETAIL;
+
+			forms.action = menuURL[pos];
+			forms.target = 'SUBTAB';
+			forms.submit();
+		}
+	}
+
+//----------------------------------------------------------
+//written by 2min0@kangcom.com
+var old_menu = '';
+var old_cell = '';
+function menuClick( submenu, cellbar, loopInt)
+{
+	if( old_menu != submenu ) {
+		if( old_menu !='' ) {
+			document.all[old_menu].style.display = 'none';
+			document.all[old_cell].src= '/img/book/folder1.gif';
+			document.all[old_cell].style.color = 'green';
+			document.all[old_cell].style.background = '#FFFFFF';
+		}
+
+		document.all[submenu].style.display = 'block';
+		document.all[submenu].style.color = 'green';
+		document.all[submenu].style.background = '#FFFFFF';
+		document.all[cellbar].src = '/img/book/folder1.gif';
+		old_menu = submenu;
+		old_cell = cellbar;
+	} else {
+		document.all[submenu].style.display = 'none';
+		document.all[submenu].style.color = 'green';
+		document.all[submenu].style.background = '#FFFFFF';
+		document.all[cellbar].src = '/img/book/folder1.gif';	
+		old_menu = '';
+		old_cell = '';
+	}
+}
+
+//----------------------------------------------------------
+//written by 2min0@kangcom.com
+var old_menu2 = '';
+var old_cell2 = '';
+function menuClick2( submenu2, cellbar2, loopInt2)
+{
+	if( old_menu2 != submenu2 ) {
+		if( old_menu2 !='' ) {
+			document.all[old_menu2].style.display = 'none';
+			document.all[old_cell2].src= '/img/book/folder.gif';
+			document.all[old_cell2].style.color = 'green';
+			document.all[old_cell2].style.background = '#FFFFFF';
+		}
+
+		document.all[submenu2].style.display = 'block';
+		document.all[submenu2].style.color = 'green';
+		document.all[submenu2].style.background = '#FFFFFF';
+		document.all[cellbar2].src = '/img/book/folder2.gif';
+		old_menu2 = submenu2;
+		old_cell2 = cellbar2;
+	} else {
+		document.all[submenu2].style.display = 'none';
+		document.all[submenu2].style.color = 'green';
+		document.all[submenu2].style.background = '#FFFFFF';
+		document.all[cellbar2].src = '/img/book/folder.gif';	
+		old_menu2 = '';
+		old_cell2 = '';
+	}
+}
+
+
+
+
+//----------------------------------------------------------
+//written by 2min0@kangcom.com
+var old_menu_Sub = '';
+var old_cell_Sub = '';
+function menuClick_Sub( submenu, cellbar, loopInt)
+{
+	if( old_menu_Sub != submenu ) {
+		if( old_menu_Sub !='' ) {
+			document.all[old_menu_Sub].style.display = 'none';
+			document.all[old_cell_Sub].src= '/img/book/folder1.gif';
+			document.all[old_cell_Sub].style.color = 'green';
+			document.all[old_cell_Sub].style.background = '#FFFFFF';
+		}
+
+		document.all[submenu].style.display = 'block';
+		document.all[submenu].style.color = 'green';
+		document.all[submenu].style.background = '#FFFFFF';
+		document.all[cellbar].src = '/img/book/folder1.gif';
+		old_menu_Sub = submenu;
+		old_cell_Sub = cellbar;
+	} else {
+		document.all[submenu].style.display = 'none';
+		document.all[submenu].style.color = 'green';
+		document.all[submenu].style.background = '#FFFFFF';
+		document.all[cellbar].src = '/img/book/folder1.gif';	
+		old_menu_Sub = '';
+		old_cell_Sub = '';
+	}
+}
+
+//----------------------------------------------------------
+//written by 2min0@kangcom.com
+var old_menu2_Sub = '';
+var old_cell2_Sub = '';
+function menuClick2_Sub( submenu2, cellbar2, loopInt2)
+{
+	if( old_menu2_Sub != submenu2 ) {
+		if( old_menu2_Sub !='' ) {
+			document.all[old_menu2_Sub].style.display = 'none';
+			document.all[old_cell2_Sub].src= '/img/book/folder.gif';
+			document.all[old_cell2_Sub].style.color = 'green';
+			document.all[old_cell2_Sub].style.background = '#FFFFFF';
+		}
+
+		document.all[submenu2].style.display = 'block';
+		document.all[submenu2].style.color = 'green';
+		document.all[submenu2].style.background = '#FFFFFF';
+		document.all[cellbar2].src = '/img/book/folder2.gif';
+		old_menu2_Sub = submenu2;
+		old_cell2_Sub = cellbar2;
+	} else {
+		document.all[submenu2].style.display = 'none';
+		document.all[submenu2].style.color = 'green';
+		document.all[submenu2].style.background = '#FFFFFF';
+		document.all[cellbar2].src = '/img/book/folder.gif';	
+		old_menu2_Sub = '';
+		old_cell2_Sub = '';
+	}
+}
+// -->
+</script>

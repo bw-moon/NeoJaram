@@ -1,0 +1,72 @@
+﻿/*  serue's poll Styles */
+
+body {
+	font-family: Times New;
+	font-size: x-small;
+
+	scrollbar-face-color : white; 
+	scrollbar-track-color : white; 
+	scrollbar-highlight-color : silver; 
+	scrollbar-shadow-color :  silver; 
+	scrollbar-3dlight-color : white; 
+	scrollbar-darkshadow-color : white; 
+	scrollbar-arrow-color : gray;	
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: gray;
+	text-decoration: none;
+}
+
+a:active {
+	color: #FF4040;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #FF4040;
+	text-decoration: none;
+}
+
+H1, H2, H3, H4 { 
+	font-variant: small-caps;
+	background-color: white;
+	color: black; 
+	padding: 4px;
+	width: 100%;
+}
+
+.size2 {
+	font-size:10pt;
+}
+
+.size1 {
+	font-size: 9pt;
+}
+
+.test{
+	border-width : 1px;
+	border-style : solid;
+	border-color : black;
+	padding : 2px;
+}
+
+.menu{
+	font-size : 10pt;
+	font-weight : bold;
+}
+
+.dotted{
+	border-width : 2px;
+	border-style : dotted;
+	border-color : d3d3d3;
+}
+
+.blank{
+	font-size : 2pt;
+}

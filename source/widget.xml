@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget>
+    <title>Widget Name</title>
+	<description>여기에는 설명이 들어간다</description>
+    <author>Styx (tasyblue@gmail.com)</author>
+    <created>
+    <preferences>
+        <preference>
+            <title>제목</title>
+            <type>string</type>
+            <value>
+        </preference>
+    </preferences>
+    <content>
+    </content>
+</widget>

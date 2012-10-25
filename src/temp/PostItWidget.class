@@ -1,0 +1,21 @@
+<?php
+require_once 'CommonWidget.php';
+
+class SchedulerWidget extends CommonWidget {
+
+	public function __construct($pref = array()) {
+        $this->widget_name = 'Scheduler';
+        $this->widget_desc = '자람 일정을 보여주는 위젯\n제작 : 문병원(070316-tasyblue@gmail.com)';
+        $this->widget_icon = 'layout';
+        $this->widget_ver = '1.0';
+        $this->widget_nickname = 'scheduler';
+        $this->widget_content = '';
+        
+        parent::__construct($pref);
+	}
+
+
+	public function getContent() {
+		return $result_html;
+	}
+}

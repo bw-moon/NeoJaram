@@ -1,0 +1,6 @@
+<?
+$bookstore_info["kangcom"] = "KangcomBookstoreParser";
+$bookstore_info["yes24"] = "YesBookstoreParser";
+$bookstore_info["aladin"] = "AladinBookstoreParser";
+$bookstore_info["amazon"] = "AmazonBookstoreParser";
+?>

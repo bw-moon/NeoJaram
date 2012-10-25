@@ -1,0 +1,64 @@
+﻿<html>
+
+<head>
+<title></title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../lib/style.css">
+
+</head>
+
+<body>
+
+<!-- 전체 테이블을 구분하는 부분 -->
+<DIV ALIGN="center"><TABLE width="80%"CELLSPACING=0 CELLPADDING=0 BORDER=0 BGCOLOR=WHITE>
+<TR><TD VALIGN="TOP">
+
+<!-- 관리자 목록 -->
+<font class="menu">현재 진행중인 설문<br>
+
+
+</TD></TR></TABLE><TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 BGCOLOR=WHITE>
+<TR><TD VALIGN="TOP">
+
+<!-- 관리자 목록 -->
+
+    <table width="90%" border=0 cellpadding=3 cellspacing=1 bgcolor="#767676">
+		<tr>
+			<td colspan="5" height=20 width="100%">&nbsp;<font color=white class="menu">현재 진행중인 설문</font></td></tr>
+		<tr>
+			<td height=22 align=center bgcolor="#C9C9C9"><font class="menu"><b>&nbsp;Start&nbsp;</b></font></td>
+			<td height=22 align=center bgcolor="#C9C9C9"><font class="menu"><b>&nbsp;End&nbsp;</b></font></td>
+			<td height=22 align=center width="448" bgcolor="#C9C9C9"><font class="menu"><b>T O P I C</b></font></td>
+			<td height=22 align=center width="90" bgcolor="#C9C9C9"><font class="menu"><b>Voted People</b></font></td>
+			<td height=22 align=center width="90" bgcolor="#C9C9C9"><font class="menu"><b>Voted Result</b></font></td>
+		</tr>
+		{{LIST}}
+  </table>
+</TD></TR></TABLE></DIV><br>
+
+<DIV ALIGN="center"><TABLE width="80%" CELLSPACING=0 CELLPADDING=0 BORDER=0 BGCOLOR=WHITE>
+<TR><TD VALIGN="TOP">
+<br>
+<font class="menu">종료된 설문<br>
+
+</TD></TR></TABLE></DIV>
+<DIV ALIGN="center"><TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 BGCOLOR=WHITE>
+<TR><TD VALIGN="TOP">
+
+    <table width="90%" border=0 cellpadding=3 cellspacing=1 bgcolor="#767676">
+		<tr>
+			<td colspan="5" height=20 width="100%">&nbsp;<font color=white class="menu">현재 진행중인 설문</font></td></tr>
+		<tr>
+			<td height=22 align=center bgcolor="#C9C9C9"><font class="menu"><b>&nbsp;Start&nbsp;</b></font></td>
+			<td height=22 align=center bgcolor="#C9C9C9"><font class="menu"><b>&nbsp;End&nbsp;</b></font></td>
+			<td height=22 align=center width="448" bgcolor="#C9C9C9"><font class="menu"><b>T O P I C</b></font></td>
+			<td height=22 align=center width="90" bgcolor="#C9C9C9"><font class="menu"><b>Voted People</b></font></td>
+			<td height=22 align=center width="90" bgcolor="#C9C9C9"><font class="menu"><b>Voted Result</b></font></td>
+		</tr>
+  {{OLD_LIST}}
+  </table>
+                <p><br>{{PAGE_BAR}}</p>
+</TD></TR></TABLE></DIV>
+</body>
+</html>

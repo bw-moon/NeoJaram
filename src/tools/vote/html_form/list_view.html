@@ -1,0 +1,135 @@
+﻿<html>
+
+<head>
+<title></title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../lib/style.css">
+
+</head>
+
+<body>
+
+<DIV ALIGN="center">
+<br>
+<TABLE CELLSPACING=0 CELLPADDING=0 border=0 BGCOLOR=WHITE>
+<TR><TD VALIGN="TOP">
+
+    <table border=0 cellpadding=3 cellspacing=1>
+
+		<tr valign=top>
+			<td colspan=7><table border=0 cellpadding=0 cellspacing=0 width='100%' style="border-style:solid none solid none; border-width:1; border-collapse:collapse;" bordercolor=gray><tr><td></td></tr></table></td></td>
+		</tr>
+
+		<tr>
+			<td><table border=0 cellpadding=3 cellspacing=1 width='100%'>
+
+				<tr>
+					<td width=600 align=left bgcolor="#DBDBDB"><font class="menu"><b>&nbsp;&nbsp;$num 번째 topic</b></font></td><!-- 1 --->
+				</tr>
+				<tr>
+					<td border=0 bgcolor="#FFFFFF">
+						
+						<!------ 내용 & 진행상황 ------->
+						<table width=600 border=0 cellpadding=0 cellspacing=0>
+							<!----- 투표에 대한 내용 ----->
+							<tr>
+								<td></td>
+								<td width="100%" colspan=4><br><font class="size2">$text</font><br><br><div align=right><font class="size1"><b>Write by $id&nbsp;&nbsp;</b><br>$ip&nbsp;&nbsp;<br><br></td>
+								<td></td>
+							</tr>
+
+							<tr>
+								<td></td>
+								
+								<!----- comment ----->
+								<td colspan=4>
+									<table border=0 cellpadding=0 cellspacing=0 width='90%' align=center><tr><td>
+										<table border=0 cellpadding=0 cellspacing=0 bgcolor=#DFE4FF><tr><td><font class=menu>&nbsp;&nbsp;$name</font></td><td>&nbsp;&nbsp;&nbsp;</td><td width='80%'><font class=size2>&nbsp;$comment</font></td><td><font class=size2>$signdate&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table>
+										</td></tr></table>
+									<table height=30 border=0><tr><td></td></tr></table>
+								</td>
+
+								<td></td>
+							</tr>
+
+
+							<!------- Topic -------->
+							<tr bgcolor=#9C9C9C>
+								<td bgcolor=#FFFFFF></td>
+								
+								<td align=left width='60%' style="border-style:solid solid solid solid; border-width:1; border-color:black;"><font color=#FFFFFF class="menu">&nbsp;&nbsp;$topic</font></td>
+
+								<td rowspan=3 bgcolor=#FFFFFF><table border=0 bgcolor=#FFFFFF><tr><td></td></tr></table></td>
+
+								<td width='40%' style="border-style:solid solid solid solid; border-width:1; border-color:black;">
+									<table width='100%' border=0 cellpadding=5 cellspacing=0>
+										<tr>
+											<td width=40 align=left bgcolor=#9C9C9C><font class="size1" color=#FFFFFF><div align=center><b>Start</b></font></div></td>
+											<td width=70 align=left bgcolor=#FFFFFF style="border-style:none solid none solid; border-width:1; border-color:black;"><div align=center><font class="size1" color=#000000>2003. 02. 23</font></div></td>
+											<td width=30 align=left><font class="size1" color=#FFFFFF ><div align=center><b>End</b></font></div></td>
+											<td width=70 align=left bgcolor=#FFFFFF style="border-style:none none none solid; border-width:1; border-color:black;"><div align=center><font class="size1" color=#000000>2003. 02. 31</font></div></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							
+							<!------  투표 진행 상황 ------->
+							<tr>
+								<td></td>
+								
+								<td align=left>
+									<table border=0 width='100%' cellpadding=7 cellspacing=0 valign=top>
+										&nbsp;&nbsp;<font class=menu>Vote please !</font>
+			
+										<form method="POST" action="">
+
+										<tr valign=top><td align=left style="border-style:solid none none solid; border-width:1; border-color:black;"><font class="menu">&nbsp;1. $option1</font></td><td width=20 style="border-style:solid solid none none; border-width:1; border-color:black;"><input type='radio' name='option' value='$option1' checked></td></tr>
+										
+										<tr valign=top><td align=left style="border-style:none none none solid; border-width:1; border-color:black;"><font class="menu">&nbsp;2. $option2</font></td><td style="border-style:none solid none none; border-width:1; border-color:black;"><input type='radio' name='option' value='$option2'></td></tr>
+										
+										<tr valign=top><td align=left style="border-style:none none solid solid; border-width:1; border-color:black;"><font class="menu">&nbsp;3. $option3</font></td><td style="border-style:none solid solid none; border-width:1; border-color:black;"><input type='radio' name='option' value='$option3'></td></tr>
+
+										<tr valign=top><td align=right colspan=2><br><input type="submit" value="Vote"></td></tr>
+
+									</table>
+								</td>
+							
+								<td valign=top align=left width=34% style="border-style:none solid solid solid; border-width:1; border-color:black;">
+									<table border=0 width='100%' cellpadding=2 cellspacing=2 valign=top>
+
+										<font class=menu><br>&nbsp;&nbsp;&nbsp;Present Result</font><br><br>
+										<tr valign=top><td width=10 rowspan=6></td><td align=left><font class="menu">&nbsp;$option1</font></td><td></td></tr>
+										<tr valign=top><td><table border=0 cellpadding=0 cellspacing=0><tr height=13><td width="100" background="../img/vote_pic.gif"></td></tr></table></td><td><font class="size2">33.3%</font></td></tr>
+
+										<tr valign=top><td align=left><font class="menu">&nbsp;$option2</font></td><td></td></tr>
+										<tr valign=top><td><table border=0 cellpadding=0 cellspacing=0><tr height=13><td width="150" background="../img/vote_pic.gif"></td></tr></table></td><td><font class="size2">50%</font></td></tr>
+
+										<tr valign=top><td align=left><font class="menu">&nbsp;$option3</font></td><td></td></tr>
+										<tr valign=top><td><table border=0 cellpadding=0 cellspacing=0><tr height=13><td width="50" background="../img/vote_pic.gif"></td></tr></table></td><td><font class="size2">16.7%</font></td></tr>
+
+									</table>
+								</td>
+								
+								<td></td>
+							</tr>
+
+						</table>
+
+					</td>
+				</tr>
+			</table></td></tr>
+		</table>
+
+		<tr valign=top>
+			<td colspan=7><table border=0 cellpadding=0 cellspacing=0 width='100%' style="border-style:solid none solid none; border-width:1; border-collapse:collapse;" bordercolor=gray><tr><td></td></tr></table></td></td>
+		</tr>
+
+		<tr>
+			<td colspan=5 align=right><br><input type=button value='medify'>&nbsp;<input type=button value='delete'>&nbsp;<input type=button value='create new vote'>&nbsp;<input type=button value='List'></td>
+		</tr>
+
+  </table>
+</TD></TR>
+</TABLE>
+</DIV>

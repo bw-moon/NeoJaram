@@ -1,0 +1,80 @@
+﻿<html>
+<head>
+<title>Jaram 3rd Renewal : 2003</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="Content-Language" content="ko-KR" />
+<meta name="Generator" content="EditPlus" />
+<meta name="Author" content="네오자람" />
+<meta name="Description" content="한양대학교 전자컴퓨터공학부 전산전공학회 자람입니다." />
+<!-- 공통 스타일 시트 -->
+<link rel="stylesheet" type="text/css" href="/css/main.css" />
+</head>
+<body onload=""  bgcolor="#ffffff" link="#1166bb" vlink="#666666" alink="#ddeeff">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <td width="10"><img src="/images/t.gif" height="1" width="10" alt="" /></td>
+    <td valign="top" class="text"> 
+		<!-- 메인 내용 시작 -->
+		<img src="/images/t.gif" height="5" width="5" alt="" /><br />
+<form name="Feditinfo" method="post" action="/member/join_admin.php">
+<table width="100%" cellpadding="3" cellspacing="0" class="text">
+	<tr>
+		<td width="10"></td>
+		<td>id</td>
+		<td>name</td>
+		<td>email</td>
+		<td>homepage</td>
+		<td>phone1</td>
+		<td>phone2</td>
+		<td>icq</td>
+		<td>msn</td>
+		<td>yim</td>
+		<td>note</td>
+	</tr>
+<?
+include "../includes/library.inc.php";
+// DB 접속
+dbconn();
+$result = mysql_query("SELECT * FROM jaram_freshman");
+$number=mysql_num_rows($result);
+for($tempi=0;$tempi<$number;$tempi++)
+{
+	mysql_data_seek($result,$tempi);
+	$data=mysql_fetch_array($result);
+	echo "
+	<tr>
+		<td><input name=\"check[]\" type=\"checkbox\" value=\"$data[0]\"/></td>
+		<td>$data[1]</td>
+		<td>$data[2]</td>
+		<td>$data[4]</td>
+		<td>$data[5]</td>
+		<td>$data[6]</td>
+		<td>$data[7]</td>
+		<td>$data[8]</td>
+		<td>$data[9]</td>
+		<td>$data[10]</td>
+		<td><a title=\"$data[11]\">OnMouse</a></td>
+	</tr>
+		";
+}
+?>
+	<tr>
+		<td colspan="12" align="center"><br/>
+		새내기 기수 : <input type="text" name="fnum" size="5" />&nbsp;&nbsp;&nbsp;
+		새내기 그룹 ID : <input type="text" name="groupid" size="5" value="1219"/>&nbsp;&nbsp;&nbsp;
+		유저 ID 시작값 : <input type="text" name="groupmyid" size="5" />&nbsp;&nbsp;&nbsp;
+		암호 : <input type="password" name="pass" size="6" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4" align="center"><br/><input type="image" src="/images/button/btn_save.gif" border="0"/>
+		</td>
+	</tr>
+</table>
+</form>
+<br/>
+</td>
+	<td width="10"><img src="/images/t.gif" height="1" width="10" alt="" /></td>
+</tr>
+</table>
+</body>
+</html>
